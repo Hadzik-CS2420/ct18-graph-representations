@@ -1,0 +1,235 @@
+name: Autograding Tests
+on:
+  - push
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Project
+      continue-on-error: true
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build --config Release
+
+    - name: Build Check (0 points)
+      id: build
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Build Check (0 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            echo "Build successful"
+          else
+            echo "Build failed" && exit 1
+          fi
+        timeout: 10
+        max-score: 0
+
+    # ==================== Constructor (2 points) ====================
+
+    - name: Constructor - Empty Graph (2 points)
+      id: constructor
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Constructor - Empty Graph (2 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphConstructor.EmptyGraph
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 2
+
+    # ==================== add_vertex (3 points) ====================
+
+    - name: add_vertex - Basic & Duplicate (3 points)
+      id: add-vertex
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: add_vertex - Basic & Duplicate (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphAddVertex.SingleVertex:GraphAddVertex.DuplicateIgnored
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    # ==================== add_edge (5 points) ====================
+
+    - name: add_edge - Creates Vertices & Undirected (3 points)
+      id: add-edge-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: add_edge - Creates Vertices & Undirected (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphAddEdge.CreatesVertices:GraphAddEdge.UndirectedEdge
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    - name: add_edge - Edge Count (2 points)
+      id: add-edge-count
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: add_edge - Edge Count (2 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphAddEdge.EdgeCount
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 2
+
+    # ==================== Queries: has_vertex / has_edge (5 points) ====================
+
+    - name: Queries - has_vertex (2 points)
+      id: query-vertex
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Queries - has_vertex (2 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphQuery.HasVertexTrue:GraphQuery.HasVertexFalse
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 2
+
+    - name: Queries - has_edge (3 points)
+      id: query-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Queries - has_edge (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphQuery.HasEdgeFalse
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    # ==================== Neighbors (3 points) ====================
+
+    - name: Neighbors - Correct List & Edge Cases (3 points)
+      id: neighbors
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Neighbors - Correct List & Edge Cases (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphNeighbors.CorrectNeighbors:GraphNeighbors.NonexistentVertex
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    # ==================== BFS (6 points) ====================
+
+    - name: BFS - Visits All & Start First (3 points)
+      id: bfs-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: BFS - Visits All & Start First (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphBFS.VisitsAllVertices:GraphBFS.AllVerticesPresent
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    - name: BFS - Edge Cases (3 points)
+      id: bfs-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: BFS - Edge Cases (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphBFS.SingleVertex:GraphBFS.NonexistentStart
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    # ==================== DFS (6 points) ====================
+
+    - name: DFS - Visits All & Start First (3 points)
+      id: dfs-basic
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: DFS - Visits All & Start First (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphDFS.VisitsAllVertices:GraphDFS.AllVerticesPresent
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    - name: DFS - Edge Cases (3 points)
+      id: dfs-edge
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: DFS - Edge Cases (3 points)
+        setup-command: ''
+        command: |
+          if [ -f build/run_tests ]; then
+            cd build && ./run_tests --gtest_filter=GraphDFS.SingleVertex:GraphDFS.NonexistentStart
+          else
+            exit 1
+          fi
+        timeout: 10
+        max-score: 3
+
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        BUILD_RESULTS:          "${{steps.build.outputs.result}}"
+        CONSTRUCTOR_RESULTS:    "${{steps.constructor.outputs.result}}"
+        ADD-VERTEX_RESULTS:     "${{steps.add-vertex.outputs.result}}"
+        ADD-EDGE-BASIC_RESULTS: "${{steps.add-edge-basic.outputs.result}}"
+        ADD-EDGE-COUNT_RESULTS: "${{steps.add-edge-count.outputs.result}}"
+        QUERY-VERTEX_RESULTS:   "${{steps.query-vertex.outputs.result}}"
+        QUERY-EDGE_RESULTS:     "${{steps.query-edge.outputs.result}}"
+        NEIGHBORS_RESULTS:      "${{steps.neighbors.outputs.result}}"
+        BFS-BASIC_RESULTS:      "${{steps.bfs-basic.outputs.result}}"
+        BFS-EDGE_RESULTS:       "${{steps.bfs-edge.outputs.result}}"
+        DFS-BASIC_RESULTS:      "${{steps.dfs-basic.outputs.result}}"
+        DFS-EDGE_RESULTS:       "${{steps.dfs-edge.outputs.result}}"
+      with:
+        runners: build,constructor,add-vertex,add-edge-basic,add-edge-count,query-vertex,query-edge,neighbors,bfs-basic,bfs-edge,dfs-basic,dfs-edge
