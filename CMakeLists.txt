@@ -1,23 +1,36 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.24)
 project(ct17-graph-representations LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 17)
 
+set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Source files (excluding main.cpp for tests)
+set(LIB_SOURCES
+    src/Graph.cpp
+)
+
+# Main executable
 add_executable(${PROJECT_NAME}
     src/main.cpp
-    src/Graph.cpp
+    ${LIB_SOURCES}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE include)
 
-# --- Google Test ---
+# ==================== Google Test ====================
 include(FetchContent)
-FetchContent_Declare(googletest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG        v1.14.0)
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+# Test executable
 add_executable(run_tests
     tests/ct17_test.cpp
-    src/Graph.cpp
+    ${LIB_SOURCES}
 )
 target_include_directories(run_tests PRIVATE include)
-target_link_libraries(run_tests gtest_main)
+target_link_libraries(run_tests GTest::gtest_main)

@@ -30,7 +30,9 @@ Graph::Graph() {}
 //   - if it exists, do nothing (idempotent)
 //
 void Graph::add_vertex(const std::string& vertex) {
-    // TODO: insert vertex into adj_list_ if not already present
+    if (adj_list_.find(vertex) == adj_list_.end()) {
+        adj_list_[vertex] = {};
+    }
 }
 
 // ---------------------------------------------------------------------------
@@ -45,7 +47,10 @@ void Graph::add_vertex(const std::string& vertex) {
 //   - this is why edge_count needs to divide by 2
 //
 void Graph::add_edge(const std::string& from, const std::string& to) {
-    // TODO: ensure both vertices exist, then add each to the other's neighbor list
+    add_vertex(from);
+    add_vertex(to);
+    adj_list_[from].push_back(to);
+    adj_list_[to].push_back(from);
 }
 
 // =============================================================================
@@ -53,28 +58,32 @@ void Graph::add_edge(const std::string& from, const std::string& to) {
 // =============================================================================
 
 bool Graph::has_vertex(const std::string& vertex) const {
-    // TODO: check if vertex exists as a key in adj_list_
-    return false;
+    return adj_list_.find(vertex) != adj_list_.end();
 }
 
 bool Graph::has_edge(const std::string& from, const std::string& to) const {
-    // TODO: check if 'to' appears in from's neighbor list
-    return false;
+    auto it = adj_list_.find(from);
+    if (it == adj_list_.end()) return false;
+    const auto& nbrs = it->second;
+    return std::find(nbrs.begin(), nbrs.end(), to) != nbrs.end();
 }
 
 int Graph::vertex_count() const {
-    // TODO: return number of keys in adj_list_
-    return 0;
+    return static_cast<int>(adj_list_.size());
 }
 
 int Graph::edge_count() const {
-    // TODO: sum all neighbor list sizes, divide by 2 (undirected)
-    return 0;
+    int total = 0;
+    for (const auto& [vertex, nbrs] : adj_list_) {
+        total += static_cast<int>(nbrs.size());
+    }
+    return total / 2;
 }
 
 std::vector<std::string> Graph::neighbors(const std::string& vertex) const {
-    // TODO: return the neighbor list for vertex (empty vector if not found)
-    return {};
+    auto it = adj_list_.find(vertex);
+    if (it == adj_list_.end()) return {};
+    return it->second;
 }
 
 // =============================================================================
@@ -98,7 +107,27 @@ std::vector<std::string> Graph::neighbors(const std::string& vertex) const {
 //
 std::vector<std::string> Graph::bfs(const std::string& start) const {
     std::vector<std::string> result;
-    // TODO: implement BFS using a queue and visited set
+    if (!has_vertex(start)) return result;
+
+    std::queue<std::string> q;
+    std::unordered_set<std::string> visited;
+
+    q.push(start);
+    visited.insert(start);
+
+    while (!q.empty()) {
+        std::string current = q.front();
+        q.pop();
+        result.push_back(current);
+
+        for (const auto& neighbor : adj_list_.at(current)) {
+            if (visited.find(neighbor) == visited.end()) {
+                visited.insert(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+
     return result;
 }
 
@@ -122,7 +151,29 @@ std::vector<std::string> Graph::bfs(const std::string& start) const {
 //
 std::vector<std::string> Graph::dfs(const std::string& start) const {
     std::vector<std::string> result;
-    // TODO: implement DFS using a stack and visited set
+    if (!has_vertex(start)) return result;
+
+    std::stack<std::string> s;
+    std::unordered_set<std::string> visited;
+
+    s.push(start);
+
+    while (!s.empty()) {
+        std::string current = s.top();
+        s.pop();
+
+        if (visited.find(current) != visited.end()) continue;
+        visited.insert(current);
+        result.push_back(current);
+
+        const auto& nbrs = adj_list_.at(current);
+        for (auto it = nbrs.rbegin(); it != nbrs.rend(); ++it) {
+            if (visited.find(*it) == visited.end()) {
+                s.push(*it);
+            }
+        }
+    }
+
     return result;
 }
 
