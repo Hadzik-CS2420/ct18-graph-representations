@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">unordered_map&lt;string, vector&lt;string&gt;&gt;</text>
+  <text x="450" y="52" text-anchor="middle" fill="#777" font-size="13">A hash map where each key maps to a list of values</text>
+
+  <!-- ===== GRAPH DRAWING (left) ===== -->
+  <rect x="30" y="70" width="340" height="280" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="200" y="95" text-anchor="middle" fill="#2980b9" font-size="14" font-weight="bold">The Graph</text>
+
+  <!-- Nodes -->
+  <circle cx="200" cy="135" r="22" fill="white" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="200" y="141" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Alice</text>
+
+  <circle cx="110" cy="225" r="22" fill="white" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="110" y="231" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Bob</text>
+
+  <circle cx="290" cy="225" r="22" fill="white" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="290" y="231" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Carol</text>
+
+  <circle cx="70" cy="310" r="22" fill="white" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="70" y="316" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Dave</text>
+
+  <circle cx="200" cy="310" r="22" fill="white" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="200" y="316" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Eve</text>
+
+  <!-- Edges -->
+  <line x1="185" y1="153" x2="125" y2="209" stroke="#2980b9" stroke-width="2"/>
+  <line x1="215" y1="153" x2="275" y2="209" stroke="#2980b9" stroke-width="2"/>
+  <line x1="97" y1="243" x2="83" y2="293" stroke="#2980b9" stroke-width="2"/>
+  <line x1="125" y1="241" x2="185" y2="295" stroke="#2980b9" stroke-width="2"/>
+  <line x1="275" y1="241" x2="215" y2="295" stroke="#2980b9" stroke-width="2"/>
+
+  <!-- ===== ARROW ===== -->
+  <text x="400" y="205" fill="#e67e22" font-size="28" font-weight="bold" text-anchor="middle">&#x2192;</text>
+  <text x="400" y="222" fill="#777" font-size="10" text-anchor="middle">stored as</text>
+
+  <!-- ===== MAP (right) ===== -->
+  <rect x="430" y="70" width="440" height="280" rx="10" fill="#f0faf0" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="650" y="95" text-anchor="middle" fill="#27ae60" font-size="14" font-weight="bold">The Map (adj_list_)</text>
+
+  <!-- Alice row -->
+  <rect x="455" y="112" width="70" height="32" rx="6" fill="#2980b9"/>
+  <text x="490" y="133" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Alice</text>
+  <text x="538" y="133" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="555" y="116" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="580" y="133" text-anchor="middle" fill="#2c3e50" font-size="11">Bob</text>
+  <rect x="610" y="116" width="55" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="637" y="133" text-anchor="middle" fill="#2c3e50" font-size="11">Carol</text>
+
+  <!-- Bob row -->
+  <rect x="455" y="155" width="70" height="32" rx="6" fill="#2980b9"/>
+  <text x="490" y="176" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Bob</text>
+  <text x="538" y="176" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="555" y="159" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="580" y="176" text-anchor="middle" fill="#2c3e50" font-size="11">Alice</text>
+  <rect x="610" y="159" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="635" y="176" text-anchor="middle" fill="#2c3e50" font-size="11">Dave</text>
+  <rect x="665" y="159" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="687" y="176" text-anchor="middle" fill="#2c3e50" font-size="11">Eve</text>
+
+  <!-- Carol row -->
+  <rect x="455" y="198" width="70" height="32" rx="6" fill="#2980b9"/>
+  <text x="490" y="219" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Carol</text>
+  <text x="538" y="219" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="555" y="202" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="580" y="219" text-anchor="middle" fill="#2c3e50" font-size="11">Alice</text>
+  <rect x="610" y="202" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="632" y="219" text-anchor="middle" fill="#2c3e50" font-size="11">Eve</text>
+
+  <!-- Dave row -->
+  <rect x="455" y="241" width="70" height="32" rx="6" fill="#2980b9"/>
+  <text x="490" y="262" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Dave</text>
+  <text x="538" y="262" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="555" y="245" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="577" y="262" text-anchor="middle" fill="#2c3e50" font-size="11">Bob</text>
+
+  <!-- Eve row -->
+  <rect x="455" y="284" width="70" height="32" rx="6" fill="#2980b9"/>
+  <text x="490" y="305" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Eve</text>
+  <text x="538" y="305" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="555" y="288" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="577" y="305" text-anchor="middle" fill="#2c3e50" font-size="11">Bob</text>
+  <rect x="605" y="288" width="55" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="632" y="305" text-anchor="middle" fill="#2c3e50" font-size="11">Carol</text>
+
+  <!-- Labels -->
+  <text x="490" y="338" text-anchor="middle" fill="#2980b9" font-size="11" font-weight="bold">key (vertex)</text>
+  <text x="630" y="338" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">value (neighbors)</text>
+
+  <!-- ===== BOTTOM: Lookup example ===== -->
+  <rect x="30" y="365" width="840" height="65" rx="10" fill="#fff3e0" stroke="#e67e22" stroke-width="1.2"/>
+  <text x="450" y="388" text-anchor="middle" fill="#e67e22" font-size="13" font-weight="bold">Example Lookup</text>
+  <text x="450" y="410" text-anchor="middle" fill="#2c3e50" font-size="13">adj_list_[<tspan font-weight="bold" fill="#2980b9">"Bob"</tspan>]  returns  {<tspan fill="#27ae60">"Alice", "Dave", "Eve"</tspan>}  &#x2014;  Bob's three neighbors</text>
+  <text x="450" y="425" text-anchor="middle" fill="#777" font-size="11">O(1) average lookup &#x2014; same hash table from Module 5</text>
+
+  <!-- ===== BOTTOM: Why a map ===== -->
+  <rect x="30" y="445" width="840" height="60" rx="10" fill="#f5f5f5" stroke="#ccc" stroke-width="1.2"/>
+  <text x="450" y="468" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Why a map instead of a struct with pointers?</text>
+  <text x="450" y="488" text-anchor="middle" fill="#555" font-size="12">Trees have fixed children (left/right). Graph vertices can have <tspan font-weight="bold">any number</tspan> of neighbors &#x2014; a vector handles that naturally.</text>
+</svg>

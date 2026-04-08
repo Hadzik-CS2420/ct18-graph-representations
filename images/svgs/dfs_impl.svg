@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 566" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">DFS: Stack-Based Traversal Implementation</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Stack drives depth-first exploration &#x2014; go as deep as possible before backtracking</text>
+
+  <!-- Column headers -->
+  <text x="210" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">CODE</text>
+  <text x="650" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">WHAT HAPPENS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="78" width="820" height="52" fill="#f9f9f9"/>
+  <rect x="20" y="130" width="820" height="54" fill="white"/>
+  <rect x="20" y="184" width="820" height="52" fill="#fef9e7"/>
+  <rect x="20" y="236" width="820" height="84" fill="white"/>
+  <rect x="20" y="320" width="820" height="82" fill="#f9f9f9"/>
+
+  <!-- ===== ROW 1: Guard clause ===== -->
+  <rect x="30" y="86" width="380" height="40" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="102" fill="#4ec9b0">vector</tspan><tspan fill="#ddd">&lt;</tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&gt; </tspan><tspan fill="#9cdcfe">result</tspan><tspan fill="#ddd">;</tspan>
+    <tspan x="40" y="118" fill="#c586c0">if</tspan><tspan fill="#ddd"> (!</tspan><tspan fill="#dcdcaa">has_vertex</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">start</tspan><tspan fill="#ddd">)) </tspan><tspan fill="#c586c0">return</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">result</tspan><tspan fill="#ddd">;</tspan>
+  </text>
+
+  <line x1="410" y1="106" x2="458" y2="106" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,102 466,106 458,110" fill="#bdc3c7"/>
+
+  <text x="476" y="104" font-size="11" fill="#555"><tspan font-weight="bold">Guard:</tspan> return empty vector if start vertex</text>
+  <text x="476" y="120" font-size="11" fill="#555">doesn't exist in the graph.</text>
+
+  <!-- ===== ROW 2: Data structures ===== -->
+  <rect x="30" y="138" width="380" height="40" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="154" fill="#4ec9b0">stack</tspan><tspan fill="#ddd">&lt;</tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&gt; </tspan><tspan fill="#9cdcfe">s</tspan><tspan fill="#ddd">;</tspan>
+    <tspan x="40" y="170" fill="#4ec9b0">unordered_set</tspan><tspan fill="#ddd">&lt;</tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&gt; </tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">;</tspan>
+  </text>
+
+  <line x1="410" y1="158" x2="458" y2="158" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,154 466,158 458,162" fill="#bdc3c7"/>
+
+  <text x="476" y="154" font-size="11" fill="#555"><tspan font-weight="bold" fill="#c0392b">Stack</tspan> for LIFO order (most recent first).</text>
+  <text x="476" y="170" font-size="11" fill="#555"><tspan font-weight="bold">Set</tspan> to track which vertices we've visited.</text>
+
+  <!-- ===== ROW 3: Seed &#x2014; highlighted (NO visited!) ===== -->
+  <rect x="30" y="196" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="214" fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">push</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">start</tspan><tspan fill="#ddd">);</tspan>
+  </text>
+
+  <line x1="410" y1="209" x2="458" y2="209" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,205 466,209 458,213" fill="#bdc3c7"/>
+
+  <text x="476" y="198" font-size="11" fill="#e67e22" font-weight="bold">Push start &#x2014; but do NOT mark visited!</text>
+  <text x="476" y="214" font-size="11" fill="#555">DFS checks visited after popping, not before</text>
+  <text x="476" y="230" font-size="11" fill="#555">pushing. This is the key difference from BFS.</text>
+
+  <!-- ===== ROW 4: Pop + check + mark ===== -->
+  <text x="30" y="250" font-size="10" fill="#555" font-style="italic">Main loop: pop top, skip if visited, mark and record</text>
+
+  <rect x="30" y="256" width="380" height="66" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="60" y="272" fill="#4ec9b0">string</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">top</tspan><tspan fill="#ddd">(); </tspan><tspan fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">pop</tspan><tspan fill="#ddd">();</tspan>
+    <tspan x="60" y="288" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">) != </tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">()) </tspan><tspan fill="#c586c0">continue</tspan><tspan fill="#ddd">;</tspan>
+    <tspan x="60" y="304" fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">insert</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">);</tspan>
+    <tspan x="60" y="320" fill="#9cdcfe">result</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">push_back</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">);</tspan>
+  </text>
+
+  <line x1="410" y1="289" x2="458" y2="289" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,285 466,289 458,293" fill="#bdc3c7"/>
+
+  <text x="476" y="270" font-size="11" fill="#c0392b" font-weight="bold">Pop from TOP (LIFO).</text>
+  <text x="476" y="286" font-size="11" fill="#555">If already visited, skip it &#x2014; a vertex can be</text>
+  <text x="476" y="302" font-size="11" fill="#555">on the stack multiple times! Otherwise mark</text>
+  <text x="476" y="318" font-size="11" fill="#555">visited and add to result.</text>
+
+  <!-- ===== ROW 5: Push neighbors in reverse ===== -->
+  <text x="30" y="334" font-size="10" fill="#555" font-style="italic">Loop body: push unvisited neighbors in reverse order</text>
+
+  <rect x="30" y="340" width="380" height="56" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="60" y="356" fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">at</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">);</tspan>
+    <tspan x="60" y="372" fill="#c586c0">for</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rbegin</tspan><tspan fill="#ddd">(); </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> != </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rend</tspan><tspan fill="#ddd">(); ++</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">)</tspan>
+    <tspan x="80" y="388" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#ddd">*</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">) == </tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">()) </tspan><tspan fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">push</tspan><tspan fill="#ddd">(</tspan><tspan fill="#ddd">*</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">);</tspan>
+  </text>
+
+  <line x1="410" y1="367" x2="458" y2="367" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,363 466,367 458,371" fill="#bdc3c7"/>
+
+  <text x="476" y="350" font-size="11" fill="#555">Push unvisited neighbors in <tspan font-weight="bold">reverse</tspan> order</text>
+  <text x="476" y="366" font-size="11" fill="#555">so the first neighbor ends up on top of the stack.</text>
+  <text x="476" y="382" font-size="11" fill="#555">This gives the same order as recursive DFS.</text>
+
+  <!-- ===== CALLOUT: BFS vs DFS ===== -->
+  <rect x="30" y="412" width="800" height="96" rx="8" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="430" y="432" text-anchor="middle" fill="#2980b9" font-size="12" font-weight="bold">BFS vs DFS: When is visited checked?</text>
+
+  <text x="50" y="452" fill="#27ae60" font-size="11" font-weight="bold">BFS</text>
+  <text x="82" y="452" fill="#555" font-size="11">marks visited at <tspan font-weight="bold" fill="#27ae60">enqueue</tspan> time (<tspan font-family="Consolas, monospace" font-size="10">visited.insert()</tspan> then <tspan font-family="Consolas, monospace" font-size="10">q.push()</tspan>)</text>
+  <text x="82" y="466" fill="#888" font-size="10">&#x2192; each vertex enters the queue exactly once</text>
+
+  <text x="50" y="486" fill="#c0392b" font-size="11" font-weight="bold">DFS</text>
+  <text x="82" y="486" fill="#555" font-size="11">checks visited at <tspan font-weight="bold" fill="#c0392b">pop</tspan> time (<tspan font-family="Consolas, monospace" font-size="10">s.top() + s.pop()</tspan>, then <tspan font-family="Consolas, monospace" font-size="10">if (visited) continue</tspan>)</text>
+  <text x="82" y="500" fill="#888" font-size="10">&#x2192; a vertex may be pushed multiple times; duplicates harmlessly skipped</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="518" width="800" height="40" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="536" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Both BFS and DFS visit every reachable vertex exactly once: O(V + E).</text>
+  <text x="430" y="552" text-anchor="middle" fill="#555" font-size="11">The data structure (queue vs stack) determines the visit order, not the complexity.</text>
+</svg>

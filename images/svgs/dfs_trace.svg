@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 765" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">DFS Step-by-Step Trace</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="13">Starting from A on graph: A--B, A--C, B--D, B--E, C--E</text>
+
+  <!-- Column headers -->
+  <rect x="30" y="65" width="840" height="30" rx="6" fill="#c0392b"/>
+  <text x="80" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Step</text>
+  <text x="210" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Action</text>
+  <text x="450" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Stack (top &#x2192; bottom)</text>
+  <text x="650" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Visited</text>
+  <text x="810" y="85" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Result</text>
+
+  <!-- Step 0: Push A -->
+  <rect x="30" y="100" width="840" height="40" rx="0" fill="#fdf2f2"/>
+  <text x="80" y="124" text-anchor="middle" fill="#555" font-size="12" font-weight="bold">0</text>
+  <text x="210" y="124" text-anchor="middle" fill="#555" font-size="11">Push A</text>
+  <rect x="410" y="108" width="40" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="430" y="125" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">A</text>
+  <text x="650" y="124" text-anchor="middle" fill="#bbb" font-size="11">{ }</text>
+  <text x="810" y="124" text-anchor="middle" fill="#bbb" font-size="11">[ ]</text>
+
+  <!-- Step 1: Pop A -->
+  <rect x="30" y="145" width="840" height="45" rx="0" fill="white"/>
+  <text x="80" y="171" text-anchor="middle" fill="#27ae60" font-size="12" font-weight="bold">1</text>
+  <text x="210" y="160" text-anchor="middle" fill="#555" font-size="11">Pop <tspan font-weight="bold" fill="#27ae60">A</tspan> &#x2192; not in visited set, so visit it</text>
+  <text x="210" y="174" text-anchor="middle" fill="#555" font-size="10">Add A to visited set, add A to result</text>
+  <text x="210" y="186" text-anchor="middle" fill="#555" font-size="10">Push A's neighbors: B, C</text>
+  <rect x="410" y="153" width="40" height="24" rx="4" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="430" y="170" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">B</text>
+  <rect x="455" y="153" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="475" y="170" text-anchor="middle" fill="#999" font-size="11">C</text>
+  <text x="650" y="171" text-anchor="middle" fill="#555" font-size="11">{A}</text>
+  <text x="810" y="171" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">[A]</text>
+
+  <!-- Step 2: Pop B -->
+  <rect x="30" y="195" width="840" height="45" rx="0" fill="#fdf2f2"/>
+  <text x="80" y="221" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="bold">2</text>
+  <text x="210" y="210" text-anchor="middle" fill="#555" font-size="11">Pop <tspan font-weight="bold" fill="#c0392b">B</tspan> &#x2192; not in visited set, so visit it</text>
+  <text x="210" y="224" text-anchor="middle" fill="#555" font-size="10">Add B to visited set, add B to result</text>
+  <text x="210" y="236" text-anchor="middle" fill="#555" font-size="10">Push B's unvisited neighbors: D, E</text>
+  <rect x="410" y="203" width="40" height="24" rx="4" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="430" y="220" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">D</text>
+  <rect x="455" y="203" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="475" y="220" text-anchor="middle" fill="#999" font-size="11">E</text>
+  <rect x="500" y="203" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="520" y="220" text-anchor="middle" fill="#999" font-size="11">C</text>
+  <text x="650" y="221" text-anchor="middle" fill="#555" font-size="11">{A, B}</text>
+  <text x="810" y="221" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[A, B]</text>
+
+  <!-- Step 3: Pop D -->
+  <rect x="30" y="245" width="840" height="45" rx="0" fill="white"/>
+  <text x="80" y="271" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="bold">3</text>
+  <text x="210" y="260" text-anchor="middle" fill="#555" font-size="11">Pop <tspan font-weight="bold" fill="#c0392b">D</tspan> &#x2192; not in visited set, so visit it</text>
+  <text x="210" y="274" text-anchor="middle" fill="#555" font-size="10">Add D to visited set, add D to result</text>
+  <text x="210" y="286" text-anchor="middle" fill="#555" font-size="10">D's neighbor B already visited &#x2014; nothing pushed</text>
+  <rect x="410" y="253" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="430" y="270" text-anchor="middle" fill="#999" font-size="11">E</text>
+  <rect x="455" y="253" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="475" y="270" text-anchor="middle" fill="#999" font-size="11">C</text>
+  <text x="650" y="271" text-anchor="middle" fill="#555" font-size="11">{A, B, D}</text>
+  <text x="810" y="271" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[A, B, D]</text>
+
+  <!-- Step 4: Pop E -->
+  <rect x="30" y="295" width="840" height="45" rx="0" fill="#fdf2f2"/>
+  <text x="80" y="321" text-anchor="middle" fill="#999" font-size="12" font-weight="bold">4</text>
+  <text x="210" y="310" text-anchor="middle" fill="#555" font-size="11">Pop <tspan font-weight="bold" fill="#555">E</tspan> &#x2192; not in visited set, so visit it</text>
+  <text x="210" y="324" text-anchor="middle" fill="#555" font-size="10">Add E to visited set, add E to result</text>
+  <text x="210" y="336" text-anchor="middle" fill="#555" font-size="10">E's neighbors: B visited, C not &#x2014; push C</text>
+  <rect x="410" y="303" width="40" height="24" rx="4" fill="white" stroke="#999" stroke-width="1"/>
+  <text x="430" y="320" text-anchor="middle" fill="#999" font-size="11">C</text>
+  <text x="650" y="321" text-anchor="middle" fill="#555" font-size="11">{A, B, D, E}</text>
+  <text x="810" y="321" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[A, B, D, E]</text>
+
+  <!-- Step 5: Pop C -->
+  <rect x="30" y="345" width="840" height="40" rx="0" fill="white"/>
+  <text x="80" y="369" text-anchor="middle" fill="#999" font-size="12" font-weight="bold">5</text>
+  <text x="210" y="363" text-anchor="middle" fill="#555" font-size="11">Pop <tspan font-weight="bold" fill="#555">C</tspan> &#x2192; not in visited set, so visit it</text>
+  <text x="210" y="377" text-anchor="middle" fill="#555" font-size="10">Add C to visited set, add C to result</text>
+  <text x="210" y="389" text-anchor="middle" fill="#555" font-size="10">Stack empty &#x2014; done!</text>
+  <text x="450" y="369" text-anchor="middle" fill="#bbb" font-size="11">empty</text>
+  <text x="650" y="369" text-anchor="middle" fill="#555" font-size="11">{A, B, D, E, C}</text>
+  <text x="810" y="369" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[A, B, D, E, C]</text>
+
+  <!-- ===== KEY INSIGHT ===== -->
+  <rect x="30" y="405" width="840" height="85" rx="10" fill="#fdf2f2" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="450" y="430" text-anchor="middle" fill="#c0392b" font-size="14" font-weight="bold">Why This Order?</text>
+  <text x="450" y="446" text-anchor="middle" fill="#555" font-size="12">The stack is <tspan font-weight="bold">LIFO</tspan> &#x2014; the most recently pushed vertex is processed next.</text>
+  <text x="450" y="462" text-anchor="middle" fill="#555" font-size="12">After visiting B, we push D and E. They land <tspan font-weight="bold">on top of</tspan> C (which was pushed earlier).</text>
+  <text x="450" y="478" text-anchor="middle" fill="#555" font-size="12">So we process D, then E, then finally C &#x2014; we explore B's branch fully before backtracking.</text>
+
+  <!-- ===== GRAPH REFERENCE ===== -->
+  <rect x="30" y="505" width="840" height="250" rx="10" fill="#fafafa" stroke="#ccc" stroke-width="1.2"/>
+  <text x="200" y="530" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">The Graph</text>
+
+  <!-- Graph: same layout as DFS overview -->
+  <circle cx="200" cy="565" r="22" fill="#27ae60" fill-opacity="0.15" stroke="#27ae60" stroke-width="2.5"/>
+  <text x="200" y="571" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">A</text>
+
+  <circle cx="120" cy="640" r="22" fill="#c0392b" fill-opacity="0.12" stroke="#c0392b" stroke-width="2"/>
+  <text x="120" y="646" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">B</text>
+
+  <circle cx="280" cy="640" r="22" fill="#999" fill-opacity="0.1" stroke="#999" stroke-width="2"/>
+  <text x="280" y="646" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">C</text>
+
+  <circle cx="70" cy="700" r="22" fill="#c0392b" fill-opacity="0.12" stroke="#c0392b" stroke-width="2"/>
+  <text x="70" y="706" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">D</text>
+
+  <circle cx="200" cy="700" r="22" fill="#999" fill-opacity="0.1" stroke="#999" stroke-width="2"/>
+  <text x="200" y="706" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">E</text>
+
+  <line x1="186" y1="583" x2="134" y2="623" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="214" y1="583" x2="266" y2="623" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="106" y1="657" x2="84" y2="683" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="134" y1="657" x2="186" y2="683" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="266" y1="657" x2="214" y2="683" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- DFS path highlight -->
+  <path d="M 186,583 L 134,623 L 84,683" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.4"/>
+
+  <!-- Color key -->
+  <text x="550" y="550" fill="#2c3e50" font-size="13" font-weight="bold">DFS Dive Path</text>
+
+  <circle cx="540" cy="578" r="10" fill="#27ae60" fill-opacity="0.2" stroke="#27ae60" stroke-width="2"/>
+  <text x="560" y="583" fill="#2c3e50" font-size="12"><tspan font-weight="bold" fill="#27ae60">Start:</tspan> A</text>
+
+  <circle cx="540" cy="613" r="10" fill="#c0392b" fill-opacity="0.15" stroke="#c0392b" stroke-width="2"/>
+  <text x="560" y="618" fill="#2c3e50" font-size="12"><tspan font-weight="bold" fill="#c0392b">Deep dive:</tspan> A &#x2192; B &#x2192; D (then backtrack)</text>
+
+  <circle cx="540" cy="648" r="10" fill="#999" fill-opacity="0.15" stroke="#999" stroke-width="2"/>
+  <text x="560" y="653" fill="#2c3e50" font-size="12"><tspan font-weight="bold" fill="#999">Backtrack:</tspan> E, C (processed later)</text>
+</svg>

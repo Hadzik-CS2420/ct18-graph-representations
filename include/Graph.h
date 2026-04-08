@@ -98,6 +98,12 @@ public:
     void print() const;
 
 private:
+    // ! DISCUSSION: Why unordered_map instead of map?
+    //   - unordered_map: O(1) average lookup — backed by a hash table (Module 5)
+    //   - map: O(log n) lookup — backed by a red-black tree, keeps keys sorted
+    //   - we don't need alphabetical order, just fast lookup by vertex name
+    //   - same reason we'd pick a hash table over a BST for a dictionary
+    //
     /// Adjacency list: maps each vertex to its list of neighbors.
     std::unordered_map<std::string, std::vector<std::string>> adj_list_;
 };

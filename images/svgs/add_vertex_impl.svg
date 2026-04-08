@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 400" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">add_vertex() &#x2014; Idempotent Vertex Insertion</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Check if vertex exists in the map; insert with empty neighbor list if new</text>
+
+  <!-- Column headers -->
+  <text x="210" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">CODE</text>
+  <text x="650" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">WHAT HAPPENS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="78" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="134" width="820" height="96" fill="white"/>
+  <rect x="20" y="230" width="820" height="56" fill="#f9f9f9"/>
+
+  <!-- ===== ROW 1: Signature ===== -->
+  <rect x="30" y="90" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="108" fill="#569cd6">void</tspan><tspan fill="#dcdcaa"> add_vertex</tspan><tspan fill="#ddd">(</tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">) {</tspan>
+  </text>
+
+  <line x1="410" y1="103" x2="458" y2="103" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,99 466,103 458,107" fill="#bdc3c7"/>
+
+  <text x="476" y="102" font-size="11" fill="#555">Takes a vertex name. Adds it to the graph</text>
+  <text x="476" y="118" font-size="11" fill="#555">only if it doesn't already exist.</text>
+
+  <!-- ===== ROW 2: Find check (expanded) ===== -->
+  <rect x="30" y="146" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="164" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">) == </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">()) {</tspan>
+  </text>
+
+  <line x1="410" y1="159" x2="458" y2="159" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,155 466,159 458,163" fill="#bdc3c7"/>
+
+  <text x="476" y="150" font-size="11" fill="#555"><tspan font-weight="bold">Both are unordered_map methods</tspan> (on the map,</text>
+  <text x="476" y="166" font-size="11" fill="#555">not on the vertex). Think of them like this:</text>
+  <text x="476" y="186" font-size="11" fill="#555"><tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">find(key)</tspan> &#x2014; search the map for this key.</text>
+  <text x="476" y="202" font-size="11" fill="#555">Returns an iterator pointing to the entry if found.</text>
+  <text x="476" y="222" font-size="11" fill="#555"><tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">end()</tspan> &#x2014; the "not found" sentinel. If <tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">find() == end()</tspan>,</text>
+  <text x="476" y="236" font-size="11" fill="#555">the key doesn't exist in the map.</text>
+
+  <!-- ===== ROW 3: Insert ===== -->
+  <rect x="30" y="242" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="70" y="260" fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">[</tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">] = {};</tspan>
+  </text>
+
+  <line x1="410" y1="255" x2="458" y2="255" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,251 466,255 458,259" fill="#bdc3c7"/>
+
+  <text x="476" y="250" font-size="11" fill="#27ae60" font-weight="bold">Insert: vertex as key, empty vector as value.</text>
+  <text x="476" y="266" font-size="11" fill="#555">The <tspan font-family="Consolas, monospace" font-size="10">{}</tspan> creates an empty neighbor list &#x2014; no edges yet.</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="300" width="800" height="86" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="322" text-anchor="middle" fill="#333" font-size="13" font-weight="bold">Idempotent (eye-dem-POH-tent)</text>
+  <text x="430" y="342" text-anchor="middle" fill="#555" font-size="12">Safe to call multiple times &#x2014; if the vertex already exists, nothing happens.</text>
+  <text x="430" y="362" text-anchor="middle" fill="#555" font-size="12">You'll see this <tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="11">find() == end()</tspan> pattern throughout the Graph class &#x2014; it's how</text>
+  <text x="430" y="378" text-anchor="middle" fill="#555" font-size="12">you check if a key exists in any unordered_map.</text>
+</svg>

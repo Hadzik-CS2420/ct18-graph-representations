@@ -27,7 +27,7 @@ Graph::Graph() {}
 // ! DISCUSSION: How add_vertex works.
 //   - check if the key already exists in the map
 //   - if not, insert it with an empty neighbor list
-//   - if it exists, do nothing (idempotent)
+//   - if it exists, do nothing (safe to call multiple times)
 //
 void Graph::add_vertex(const std::string& vertex) {
     if (adj_list_.find(vertex) == adj_list_.end()) {

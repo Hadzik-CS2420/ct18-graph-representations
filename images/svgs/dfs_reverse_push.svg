@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 660" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">DFS: Pushing Neighbors in Reverse</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Breaking down the reverse iterator loop and why we dereference with *it</text>
+
+  <!-- ===== FULL CODE BLOCK ===== -->
+  <rect x="30" y="66" width="500" height="100" rx="8" fill="#1e1e1e"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="86" fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">at</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">);</tspan>
+    <tspan x="50" y="106" fill="#c586c0">for</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rbegin</tspan><tspan fill="#ddd">(); </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> != </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rend</tspan><tspan fill="#ddd">(); ++</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">) {</tspan>
+    <tspan x="70" y="126" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#ddd">*</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">) == </tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">())</tspan>
+    <tspan x="90" y="146" fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">push</tspan><tspan fill="#ddd">(</tspan><tspan fill="#ddd">*</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">);</tspan>
+    <tspan x="50" y="160" fill="#ddd">}</tspan>
+  </text>
+
+  <!-- ===== LINE-BY-LINE BREAKDOWN ===== -->
+  <text x="430" y="192" text-anchor="middle" fill="#2c3e50" font-size="15" font-weight="bold">Line-by-Line Breakdown</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="200" width="820" height="124" fill="#f9f9f9"/>
+  <rect x="20" y="324" width="820" height="80" fill="white"/>
+  <rect x="20" y="404" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="460" width="820" height="56" fill="white"/>
+
+  <!-- ===== ROW 1: nbrs (expanded) ===== -->
+  <rect x="30" y="212" width="400" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="230" fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">at</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">current</tspan><tspan fill="#ddd">);</tspan>
+  </text>
+
+  <line x1="430" y1="225" x2="468" y2="225" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="468,221 476,225 468,229" fill="#bdc3c7"/>
+
+  <text x="486" y="220" font-size="11" fill="#555" font-weight="bold">Get current's neighbor vector by key.</text>
+  <text x="486" y="240" font-size="11" fill="#555">Different from <tspan font-family="Consolas, monospace" font-size="10">.find()</tspan> &#x2014; we don't need an iterator</text>
+  <text x="486" y="256" font-size="11" fill="#555">here. <tspan font-family="Consolas, monospace" font-size="10">.at(key)</tspan> goes straight to the value.</text>
+  <text x="486" y="276" font-size="11" fill="#555">We already know the vertex exists (we just</text>
+  <text x="486" y="292" font-size="11" fill="#555">popped it), so <tspan font-family="Consolas, monospace" font-size="10">.at()</tspan> is a direct lookup.</text>
+  <text x="486" y="308" font-size="10" fill="#888">If the key were missing, .at() would throw an error.</text>
+
+  <!-- ===== ROW 2: rbegin/rend (expanded) ===== -->
+  <rect x="30" y="334" width="400" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="352" fill="#c586c0">for</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rbegin</tspan><tspan fill="#ddd">(); </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> != </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">rend</tspan><tspan fill="#ddd">(); ++</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">)</tspan>
+  </text>
+
+  <line x1="430" y1="347" x2="468" y2="347" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="468,343 476,347 468,351" fill="#bdc3c7"/>
+
+  <text x="486" y="338" font-size="11" fill="#c0392b" font-weight="bold">Reverse iterator &#x2014; loops back to front.</text>
+  <text x="486" y="354" font-size="11" fill="#555"><tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">rbegin()</tspan> = last element (reverse begin)</text>
+  <text x="486" y="370" font-size="11" fill="#555"><tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">rend()</tspan>   = one before first (reverse end)</text>
+  <text x="486" y="388" font-size="10" fill="#888">Compare: begin()/end() go front-to-back.</text>
+  <text x="486" y="402" font-size="10" fill="#888">rbegin()/rend() go back-to-front.</text>
+
+  <!-- ===== ROW 3: *it dereference ===== -->
+  <rect x="30" y="416" width="400" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="434" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#e67e22" font-weight="bold">*it</tspan><tspan fill="#ddd">) == </tspan><tspan fill="#9cdcfe">visited</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">())</tspan>
+  </text>
+
+  <line x1="430" y1="429" x2="468" y2="429" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="468,425 476,429 468,433" fill="#bdc3c7"/>
+
+  <text x="486" y="424" font-size="11" fill="#e67e22" font-weight="bold">*it = dereference the iterator.</text>
+  <text x="486" y="440" font-size="11" fill="#555"><tspan font-family="Consolas, monospace" font-size="10">it</tspan> points to an element. <tspan font-family="Consolas, monospace" font-size="10">*it</tspan> gives you the value.</text>
+  <text x="486" y="456" font-size="10" fill="#888">Like a pointer: <tspan font-family="Consolas, monospace">it</tspan> = address, <tspan font-family="Consolas, monospace">*it</tspan> = the string at that address.</text>
+
+  <!-- ===== ROW 4: s.push(*it) ===== -->
+  <rect x="30" y="472" width="400" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="490" fill="#9cdcfe">s</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">push</tspan><tspan fill="#ddd">(</tspan><tspan fill="#e67e22" font-weight="bold">*it</tspan><tspan fill="#ddd">);</tspan>
+  </text>
+
+  <line x1="430" y1="485" x2="468" y2="485" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="468,481 476,485 468,489" fill="#bdc3c7"/>
+
+  <text x="486" y="480" font-size="11" fill="#555">Push the neighbor string onto the stack.</text>
+  <text x="486" y="496" font-size="11" fill="#555">Last pushed = on top = popped next.</text>
+
+  <!-- ===== VISUAL EXAMPLE ===== -->
+  <rect x="30" y="520" width="800" height="86" rx="10" fill="#fafafa" stroke="#ccc" stroke-width="1.2"/>
+  <text x="430" y="542" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Example: current = "A", nbrs = ["B", "C"]</text>
+
+  <!-- Forward iteration -->
+  <text x="60" y="564" fill="#888" font-size="10">begin() &#x2192; end():</text>
+  <rect x="180" y="552" width="40" height="22" rx="3" fill="white" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="200" y="568" text-anchor="middle" fill="#555" font-size="10">B</text>
+  <text x="228" y="568" fill="#888" font-size="10">&#x2192;</text>
+  <rect x="240" y="552" width="40" height="22" rx="3" fill="white" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="260" y="568" text-anchor="middle" fill="#555" font-size="10">C</text>
+  <text x="300" y="568" fill="#888" font-size="10">push B then C &#x2192; C on top &#x2192; wrong order</text>
+
+  <!-- Reverse iteration -->
+  <text x="60" y="588" fill="#c0392b" font-size="10" font-weight="bold">rbegin() &#x2192; rend():</text>
+  <rect x="180" y="576" width="40" height="22" rx="3" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="200" y="592" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">C</text>
+  <text x="228" y="592" fill="#c0392b" font-size="10">&#x2192;</text>
+  <rect x="240" y="576" width="40" height="22" rx="3" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="260" y="592" text-anchor="middle" fill="#c0392b" font-size="10" font-weight="bold">B</text>
+  <text x="300" y="592" fill="#27ae60" font-size="10" font-weight="bold">push C then B &#x2192; B on top &#x2192; B popped first &#x2713;</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="616" width="800" height="34" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="638" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Reverse push = first neighbor ends up on top of the stack = gets explored first.</text>
+</svg>

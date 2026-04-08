@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 260" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">has_vertex() &#x2014; O(1) Vertex Lookup</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Check if a vertex exists in the adjacency list &#x2014; one-line hash table lookup</text>
+
+  <!-- Column headers -->
+  <text x="210" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">CODE</text>
+  <text x="650" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">WHAT HAPPENS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="78" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="134" width="820" height="56" fill="white"/>
+
+  <!-- ===== ROW 1: Signature ===== -->
+  <rect x="30" y="90" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="108" fill="#569cd6">bool</tspan><tspan fill="#dcdcaa"> has_vertex</tspan><tspan fill="#ddd">(</tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">) </tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> {</tspan>
+  </text>
+
+  <line x1="410" y1="103" x2="458" y2="103" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,99 466,103 458,107" fill="#bdc3c7"/>
+
+  <text x="476" y="102" font-size="11" fill="#555">Returns <tspan font-weight="bold" fill="#27ae60">true</tspan> if vertex exists in the graph.</text>
+
+  <!-- ===== ROW 2: Return ===== -->
+  <rect x="30" y="146" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="164" fill="#c586c0">return</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">) != </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">();</tspan>
+  </text>
+
+  <line x1="410" y1="159" x2="458" y2="159" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,155 466,159 458,163" fill="#bdc3c7"/>
+
+  <text x="476" y="154" font-size="11" fill="#555"><tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">find()</tspan> returns <tspan fill="#2980b9" font-weight="bold" font-family="Consolas, monospace" font-size="10">end()</tspan> if not found.</text>
+  <text x="476" y="170" font-size="11" fill="#555">If find &#x2260; end, the key exists. <tspan font-weight="bold">O(1)</tspan> average.</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="200" width="800" height="48" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="220" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">O(1) average &#x2014; hash table lookup, same as any unordered_map key check.</text>
+  <text x="430" y="238" text-anchor="middle" fill="#888" font-size="11">Used internally by bfs() and dfs() to guard against invalid start vertices.</text>
+</svg>
