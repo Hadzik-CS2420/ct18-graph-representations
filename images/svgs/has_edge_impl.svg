@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">has_edge() &#x2014; Two-Step Edge Lookup</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">First find the vertex in the map, then search its neighbor list</text>
+
+  <!-- Column headers -->
+  <text x="210" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">CODE</text>
+  <text x="650" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">WHAT HAPPENS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="78" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="134" width="820" height="60" fill="white"/>
+  <rect x="20" y="194" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="250" width="820" height="56" fill="white"/>
+
+  <!-- ===== ROW 1: Signature ===== -->
+  <rect x="30" y="90" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="108" fill="#569cd6">bool</tspan><tspan fill="#dcdcaa"> has_edge</tspan><tspan fill="#ddd">(</tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">from</tspan><tspan fill="#ddd">, </tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#4ec9b0">string</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">to</tspan><tspan fill="#ddd">) </tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> {</tspan>
+  </text>
+
+  <line x1="410" y1="103" x2="458" y2="103" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,99 466,103 458,107" fill="#bdc3c7"/>
+
+  <text x="476" y="102" font-size="11" fill="#555">Returns true if an edge exists between from and to.</text>
+
+  <!-- ===== ROW 2: Find vertex + guard ===== -->
+  <rect x="30" y="142" width="380" height="40" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="158" fill="#569cd6">auto</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">from</tspan><tspan fill="#ddd">);</tspan>
+    <tspan x="50" y="174" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd"> == </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">()) </tspan><tspan fill="#c586c0">return</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">false</tspan><tspan fill="#ddd">;</tspan>
+  </text>
+
+  <line x1="410" y1="162" x2="458" y2="162" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,158 466,162 458,166" fill="#bdc3c7"/>
+
+  <text x="476" y="155" font-size="11" fill="#2980b9" font-weight="bold">Step 1: Find "from" vertex in the map.</text>
+  <text x="476" y="171" font-size="11" fill="#555">If it doesn't exist, the edge can't exist either.</text>
+
+  <!-- ===== ROW 3: Get neighbor vector ===== -->
+  <rect x="30" y="206" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="224" fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd">&amp; </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd"> = </tspan><tspan fill="#9cdcfe">it</tspan><tspan fill="#ddd">-></tspan><tspan fill="#9cdcfe">second</tspan><tspan fill="#ddd">;</tspan>
+  </text>
+
+  <line x1="410" y1="219" x2="458" y2="219" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,215 466,219 458,223" fill="#bdc3c7"/>
+
+  <text x="476" y="214" font-size="11" fill="#555">Get the neighbor vector. <tspan font-family="Consolas, monospace" font-size="10">it-&gt;second</tspan> is the</text>
+  <text x="476" y="230" font-size="11" fill="#555"><tspan font-family="Consolas, monospace" font-size="10">vector&lt;string&gt;</tspan> mapped to this vertex.</text>
+
+  <!-- ===== ROW 4: Linear search ===== -->
+  <rect x="30" y="262" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="50" y="280" fill="#c586c0">return</tspan><tspan fill="#ddd"> </tspan><tspan fill="#dcdcaa">find</tspan><tspan fill="#ddd">(</tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">begin</tspan><tspan fill="#ddd">(), </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">(), </tspan><tspan fill="#9cdcfe">to</tspan><tspan fill="#ddd">) != </tspan><tspan fill="#9cdcfe">nbrs</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">end</tspan><tspan fill="#ddd">();</tspan>
+  </text>
+
+  <line x1="410" y1="275" x2="458" y2="275" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,271 466,275 458,279" fill="#bdc3c7"/>
+
+  <text x="476" y="270" font-size="11" fill="#e67e22" font-weight="bold">Step 2: Linear search for "to" in neighbors.</text>
+  <text x="476" y="286" font-size="11" fill="#555">O(degree) &#x2014; depends on how many neighbors "from" has.</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="318" width="800" height="48" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="338" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Two-step lookup: O(1) hash to find vertex, then O(degree) linear scan.</text>
+  <text x="430" y="356" text-anchor="middle" fill="#888" font-size="11">std::find does a linear search &#x2014; same as scanning a vector from front to back.</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 360" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="510" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Breaking Down the neighbors() Signature</text>
+
+  <!-- Full declaration -->
+  <rect x="40" y="50" width="940" height="40" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1.2"/>
+  <text x="510" y="76" text-anchor="middle" font-size="14" fill="#2c3e50" font-family="Consolas, monospace">
+    <tspan fill="#27ae60">std::vector</tspan>&lt;<tspan fill="#27ae60">std::string</tspan>&gt;   <tspan fill="#8e44ad" font-weight="bold">neighbors</tspan>(<tspan fill="#2980b9">const std::string&amp;</tspan>   <tspan fill="#e67e22">vertex</tspan>)   <tspan fill="#c0392b">const</tspan>;
+  </text>
+
+  <!-- ===== PART 1: Return type ===== -->
+  <rect x="30" y="110" width="210" height="70" rx="8" fill="#f0faf0" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="135" y="132" text-anchor="middle" fill="#27ae60" font-size="12" font-weight="bold" font-family="Consolas, monospace">std::vector&lt;string&gt;</text>
+  <text x="135" y="150" text-anchor="middle" fill="#555" font-size="11">The <tspan font-weight="bold">return type</tspan></text>
+  <text x="135" y="165" text-anchor="middle" fill="#555" font-size="11">a list of neighbor names</text>
+
+  <!-- ===== PART 2: Function name ===== -->
+  <rect x="260" y="110" width="210" height="70" rx="8" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="365" y="132" text-anchor="middle" fill="#8e44ad" font-size="12" font-weight="bold" font-family="Consolas, monospace">neighbors</text>
+  <text x="365" y="150" text-anchor="middle" fill="#555" font-size="11">The <tspan font-weight="bold">function name</tspan></text>
+  <text x="365" y="165" text-anchor="middle" fill="#555" font-size="11">"who is this vertex connected to?"</text>
+
+  <!-- ===== PART 3: const string& ===== -->
+  <rect x="490" y="110" width="200" height="70" rx="8" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="590" y="132" text-anchor="middle" fill="#2980b9" font-size="12" font-weight="bold" font-family="Consolas, monospace">const string&amp;</text>
+  <text x="590" y="150" text-anchor="middle" fill="#555" font-size="11">Pass by <tspan font-weight="bold">const reference</tspan></text>
+  <text x="590" y="165" text-anchor="middle" fill="#555" font-size="11">read-only, no copy made</text>
+
+  <!-- ===== PART 4: vertex ===== -->
+  <rect x="710" y="110" width="140" height="70" rx="8" fill="#fff3e0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="780" y="132" text-anchor="middle" fill="#e67e22" font-size="12" font-weight="bold" font-family="Consolas, monospace">vertex</text>
+  <text x="780" y="150" text-anchor="middle" fill="#555" font-size="11">The <tspan font-weight="bold">parameter</tspan></text>
+  <text x="780" y="165" text-anchor="middle" fill="#555" font-size="11">which vertex to look up</text>
+
+  <!-- ===== PART 5: const ===== -->
+  <rect x="870" y="110" width="120" height="70" rx="8" fill="#fdf2f2" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="930" y="132" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="bold" font-family="Consolas, monospace">const</text>
+  <text x="930" y="150" text-anchor="middle" fill="#555" font-size="11"><tspan font-weight="bold">Does not modify</tspan></text>
+  <text x="930" y="165" text-anchor="middle" fill="#555" font-size="11">the graph (query only)</text>
+
+  <!-- ===== VISUAL EXAMPLE ===== -->
+  <text x="510" y="208" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Example</text>
+
+  <!-- Call -->
+  <rect x="100" y="220" width="320" height="35" rx="6" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+  <text x="260" y="243" text-anchor="middle" font-size="13" font-family="Consolas, monospace" fill="#2c3e50">
+    <tspan fill="#27ae60">auto</tspan> n = g.<tspan fill="#8e44ad" font-weight="bold">neighbors</tspan>(<tspan fill="#e67e22">"Bob"</tspan>);
+  </text>
+
+  <!-- Arrow -->
+  <text x="455" y="243" fill="#999" font-size="18">&#x2192;</text>
+
+  <!-- Result -->
+  <rect x="490" y="220" width="420" height="35" rx="6" fill="#f0faf0" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="505" y="243" fill="#555" font-size="12">n = </text>
+  <text x="530" y="243" fill="#27ae60" font-size="13" font-weight="bold">{"Alice", "Dave", "Eve"}</text>
+
+  <!-- Read it aloud -->
+  <rect x="70" y="275" width="880" height="75" rx="8" fill="#fff3e0" stroke="#e67e22" stroke-width="1.2"/>
+  <text x="510" y="300" text-anchor="middle" fill="#e67e22" font-size="13" font-weight="bold">Read It Aloud</text>
+  <text x="510" y="320" text-anchor="middle" fill="#555" font-size="12">"Return a <tspan font-weight="bold" fill="#27ae60">vector of strings</tspan> containing the <tspan font-weight="bold" fill="#8e44ad">neighbors</tspan> of the given <tspan font-weight="bold" fill="#e67e22">vertex</tspan>.</text>
+  <text x="510" y="338" text-anchor="middle" fill="#555" font-size="12">This function is <tspan font-weight="bold" fill="#c0392b">const</tspan> &#x2014; it reads from the graph without changing it."</text>
+</svg>

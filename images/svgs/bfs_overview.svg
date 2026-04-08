@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">BFS &#x2014; Breadth-First Search</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="13">Explore level by level using a QUEUE (FIFO)</text>
+
+  <!-- ===== GRAPH + VISIT ORDER ===== -->
+  <rect x="30" y="65" width="420" height="280" rx="10" fill="#f0faf0" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="240" y="90" text-anchor="middle" fill="#27ae60" font-size="14" font-weight="bold">Visit Order (starting from A)</text>
+
+  <!-- Level 0 -->
+  <circle cx="240" cy="130" r="22" fill="#27ae60" fill-opacity="0.15" stroke="#27ae60" stroke-width="2.5"/>
+  <text x="240" y="136" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">A</text>
+  <text x="285" y="130" fill="#27ae60" font-size="11" font-weight="bold">1st</text>
+  <text x="385" y="130" fill="#27ae60" font-size="10">dist 0</text>
+
+  <!-- Level 1 -->
+  <circle cx="160" cy="200" r="22" fill="#2980b9" fill-opacity="0.12" stroke="#2980b9" stroke-width="2"/>
+  <text x="160" y="206" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">B</text>
+  <text x="115" y="200" fill="#2980b9" font-size="11" font-weight="bold">2nd</text>
+
+  <circle cx="320" cy="200" r="22" fill="#2980b9" fill-opacity="0.12" stroke="#2980b9" stroke-width="2"/>
+  <text x="320" y="206" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">C</text>
+  <text x="360" y="200" fill="#2980b9" font-size="11" font-weight="bold">3rd</text>
+  <text x="385" y="200" fill="#2980b9" font-size="10">dist 1</text>
+
+  <!-- Level 2 -->
+  <circle cx="110" cy="275" r="22" fill="#8e44ad" fill-opacity="0.12" stroke="#8e44ad" stroke-width="2"/>
+  <text x="110" y="281" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">D</text>
+  <text x="68" y="275" fill="#8e44ad" font-size="11" font-weight="bold">4th</text>
+
+  <circle cx="240" cy="275" r="22" fill="#8e44ad" fill-opacity="0.12" stroke="#8e44ad" stroke-width="2"/>
+  <text x="240" y="281" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">E</text>
+  <text x="280" y="275" fill="#8e44ad" font-size="11" font-weight="bold">5th</text>
+  <text x="385" y="275" fill="#8e44ad" font-size="10">dist 2</text>
+
+  <!-- Edges -->
+  <line x1="226" y1="149" x2="174" y2="182" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="254" y1="149" x2="306" y2="182" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="146" y1="218" x2="124" y2="257" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="174" y1="218" x2="226" y2="257" stroke="#bbb" stroke-width="1.5"/>
+  <line x1="306" y1="218" x2="254" y2="257" stroke="#bbb" stroke-width="1.5"/>
+
+  <!-- Result bar -->
+  <rect x="55" y="310" width="370" height="26" rx="5" fill="#f5f5f5" stroke="#ddd"/>
+  <text x="65" y="328" fill="#777" font-size="11">Order:</text>
+  <text x="115" y="328" fill="#27ae60" font-size="12" font-weight="bold">A</text>
+  <text x="138" y="328" fill="#bbb" font-size="11">&#x2192;</text>
+  <text x="155" y="328" fill="#2980b9" font-size="12" font-weight="bold">B</text>
+  <text x="178" y="328" fill="#bbb" font-size="11">&#x2192;</text>
+  <text x="195" y="328" fill="#2980b9" font-size="12" font-weight="bold">C</text>
+  <text x="218" y="328" fill="#bbb" font-size="11">&#x2192;</text>
+  <text x="235" y="328" fill="#8e44ad" font-size="12" font-weight="bold">D</text>
+  <text x="258" y="328" fill="#bbb" font-size="11">&#x2192;</text>
+  <text x="275" y="328" fill="#8e44ad" font-size="12" font-weight="bold">E</text>
+
+  <!-- ===== ALGORITHM ===== -->
+  <rect x="470" y="65" width="400" height="280" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="670" y="90" text-anchor="middle" fill="#2980b9" font-size="14" font-weight="bold">The Algorithm</text>
+
+  <!-- Steps -->
+  <circle cx="495" cy="115" r="10" fill="#2980b9"/>
+  <text x="495" y="119" text-anchor="middle" fill="white" font-size="10" font-weight="bold">1</text>
+  <text x="515" y="119" fill="#2c3e50" font-size="12">Create a <tspan font-weight="bold">queue</tspan> and a <tspan font-weight="bold">visited set</tspan></text>
+
+  <circle cx="495" cy="145" r="10" fill="#2980b9"/>
+  <text x="495" y="149" text-anchor="middle" fill="white" font-size="10" font-weight="bold">2</text>
+  <text x="515" y="149" fill="#2c3e50" font-size="12">Enqueue the <tspan font-weight="bold">start vertex</tspan>, mark it visited</text>
+
+  <circle cx="495" cy="175" r="10" fill="#2980b9"/>
+  <text x="495" y="179" text-anchor="middle" fill="white" font-size="10" font-weight="bold">3</text>
+  <text x="515" y="179" fill="#2c3e50" font-size="12">While queue is not empty:</text>
+
+  <text x="535" y="200" fill="#555" font-size="11">a. <tspan font-weight="bold">Dequeue</tspan> the front vertex</text>
+  <text x="535" y="218" fill="#555" font-size="11">b. Add it to the <tspan font-weight="bold">result</tspan></text>
+  <text x="535" y="236" fill="#555" font-size="11">c. Enqueue all <tspan font-weight="bold">unvisited neighbors</tspan></text>
+  <text x="535" y="254" fill="#555" font-size="11">d. Mark each neighbor as <tspan font-weight="bold">visited</tspan></text>
+
+  <!-- Queue visual -->
+  <text x="670" y="282" text-anchor="middle" fill="#2980b9" font-size="11" font-weight="bold">Queue (FIFO): first in, first out</text>
+  <rect x="540" y="290" width="45" height="25" rx="4" fill="white" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="562" y="307" text-anchor="middle" fill="#2c3e50" font-size="10">B</text>
+  <rect x="590" y="290" width="45" height="25" rx="4" fill="white" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="612" y="307" text-anchor="middle" fill="#2c3e50" font-size="10">C</text>
+  <rect x="640" y="290" width="45" height="25" rx="4" fill="#eee" stroke="#bbb" stroke-width="1"/>
+  <text x="662" y="307" text-anchor="middle" fill="#bbb" font-size="10">...</text>
+  <text x="700" y="307" fill="#777" font-size="10">&#x2190; process left to right</text>
+  <text x="540" y="332" fill="#27ae60" font-size="10" font-weight="bold">front (next out)</text>
+
+  <!-- ===== KEY PROPERTIES ===== -->
+  <rect x="30" y="360" width="840" height="100" rx="10" fill="#fafafa" stroke="#ccc" stroke-width="1.2"/>
+  <text x="450" y="385" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Key Properties</text>
+
+  <circle cx="60" cy="410" r="3" fill="#27ae60"/>
+  <text x="75" y="414" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Shortest path</tspan> in unweighted graphs &#x2014; visits dist 1 before dist 2, dist 2 before dist 3</text>
+
+  <circle cx="60" cy="433" r="3" fill="#27ae60"/>
+  <text x="75" y="437" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Time:</tspan> O(V + E) &#x2014; each vertex and edge visited exactly once</text>
+
+  <circle cx="60" cy="448" r="3" fill="#27ae60"/>
+  <text x="75" y="452" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Space:</tspan> O(V) &#x2014; queue + visited set can hold all vertices</text>
+
+  <!-- ===== WHEN TO USE ===== -->
+  <rect x="30" y="475" width="840" height="90" rx="10" fill="#fff3e0" stroke="#e67e22" stroke-width="1.2"/>
+  <text x="450" y="500" text-anchor="middle" fill="#e67e22" font-size="14" font-weight="bold">When to Use BFS</text>
+
+  <circle cx="60" cy="522" r="3" fill="#e67e22"/>
+  <text x="75" y="526" fill="#2c3e50" font-size="12">"How far is X from Y?" &#x2014; degrees of separation in a social network</text>
+
+  <circle cx="60" cy="545" r="3" fill="#e67e22"/>
+  <text x="75" y="549" fill="#2c3e50" font-size="12">"What's the shortest route?" &#x2014; GPS navigation (unweighted), web crawler (fewest hops)</text>
+</svg>

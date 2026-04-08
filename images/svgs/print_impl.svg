@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 420" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">print() &#x2014; Display Adjacency List</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Iterate all vertices and print their neighbor lists to the console</text>
+
+  <!-- Column headers -->
+  <text x="210" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">CODE</text>
+  <text x="650" y="72" text-anchor="middle" fill="#888" font-size="11" font-weight="bold">WHAT HAPPENS</text>
+
+  <!-- Row backgrounds -->
+  <rect x="20" y="78" width="820" height="56" fill="#f9f9f9"/>
+  <rect x="20" y="134" width="820" height="56" fill="white"/>
+  <rect x="20" y="190" width="820" height="76" fill="#f9f9f9"/>
+
+  <!-- ===== ROW 1: Outer loop ===== -->
+  <rect x="30" y="90" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="40" y="108" fill="#c586c0">for</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#569cd6">const</tspan><tspan fill="#ddd"> </tspan><tspan fill="#569cd6">auto</tspan><tspan fill="#ddd">&amp; [</tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd">, </tspan><tspan fill="#9cdcfe">neighbors</tspan><tspan fill="#ddd">] : </tspan><tspan fill="#9cdcfe">adj_list_</tspan><tspan fill="#ddd">) {</tspan>
+  </text>
+
+  <line x1="410" y1="103" x2="458" y2="103" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,99 466,103 458,107" fill="#bdc3c7"/>
+
+  <text x="476" y="100" font-size="11" fill="#555"><tspan font-weight="bold">Structured binding:</tspan> iterate every vertex</text>
+  <text x="476" y="116" font-size="11" fill="#555">and its neighbor vector in the map.</text>
+
+  <!-- ===== ROW 2: Print vertex label ===== -->
+  <rect x="30" y="146" width="380" height="26" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="60" y="164" fill="#9cdcfe">cout</tspan><tspan fill="#ddd"> &lt;&lt; </tspan><tspan fill="#9cdcfe">vertex</tspan><tspan fill="#ddd"> &lt;&lt; </tspan><tspan fill="#ce9178">": "</tspan><tspan fill="#ddd">;</tspan>
+  </text>
+
+  <line x1="410" y1="159" x2="458" y2="159" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,155 466,159 458,163" fill="#bdc3c7"/>
+
+  <text x="476" y="155" font-size="11" fill="#555">Print vertex name followed by ": ".</text>
+  <text x="476" y="171" font-size="11" fill="#555">Each vertex gets its own line of output.</text>
+
+  <!-- ===== ROW 3: Inner loop ===== -->
+  <rect x="30" y="200" width="380" height="50" rx="4" fill="#2d2d2d"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="10">
+    <tspan x="60" y="216" fill="#c586c0">for</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#4ec9b0">size_t</tspan><tspan fill="#ddd"> </tspan><tspan fill="#9cdcfe">i</tspan><tspan fill="#ddd"> = 0; </tspan><tspan fill="#9cdcfe">i</tspan><tspan fill="#ddd"> &lt; </tspan><tspan fill="#9cdcfe">neighbors</tspan><tspan fill="#ddd">.</tspan><tspan fill="#dcdcaa">size</tspan><tspan fill="#ddd">(); ++</tspan><tspan fill="#9cdcfe">i</tspan><tspan fill="#ddd">) {</tspan>
+    <tspan x="80" y="232" fill="#c586c0">if</tspan><tspan fill="#ddd"> (</tspan><tspan fill="#9cdcfe">i</tspan><tspan fill="#ddd"> &gt; 0) </tspan><tspan fill="#9cdcfe">cout</tspan><tspan fill="#ddd"> &lt;&lt; </tspan><tspan fill="#ce9178">", "</tspan><tspan fill="#ddd">;</tspan>
+    <tspan x="80" y="248" fill="#9cdcfe">cout</tspan><tspan fill="#ddd"> &lt;&lt; </tspan><tspan fill="#9cdcfe">neighbors</tspan><tspan fill="#ddd">[</tspan><tspan fill="#9cdcfe">i</tspan><tspan fill="#ddd">];</tspan>
+  </text>
+
+  <line x1="410" y1="228" x2="458" y2="228" stroke="#bdc3c7" stroke-width="1.5"/>
+  <polygon points="458,224 466,228 458,232" fill="#bdc3c7"/>
+
+  <text x="476" y="216" font-size="11" fill="#555">Print neighbors comma-separated.</text>
+  <text x="476" y="232" font-size="11" fill="#555">The <tspan font-family="Consolas, monospace" font-size="10">if (i &gt; 0)</tspan> avoids a leading comma</text>
+  <text x="476" y="248" font-size="11" fill="#555">before the first neighbor.</text>
+
+  <!-- ===== EXAMPLE OUTPUT ===== -->
+  <rect x="30" y="278" width="800" height="86" rx="10" fill="#fafafa" stroke="#ccc" stroke-width="1.2"/>
+  <text x="430" y="298" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold">Example Output</text>
+
+  <rect x="60" y="308" width="300" height="46" rx="6" fill="#1e1e1e"/>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="11">
+    <tspan x="74" y="326" fill="#ddd">Alice: Bob, Carol</tspan>
+    <tspan x="74" y="344" fill="#ddd">Bob: Alice, Dave, Eve</tspan>
+  </text>
+
+  <text x="400" y="330" font-size="11" fill="#777">&#x2190; vertex: neighbor, neighbor, ...</text>
+  <text x="400" y="348" font-size="11" fill="#e67e22">Order depends on hash function!</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="374" width="800" height="40" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="392" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Output order is NOT alphabetical &#x2014; it depends on the hash function.</text>
+  <text x="430" y="408" text-anchor="middle" fill="#888" font-size="11">Running the same code twice may print vertices in different order. That's normal for unordered_map.</text>
+</svg>

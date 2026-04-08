@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 730" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="28" text-anchor="middle" font-size="22" font-weight="bold" fill="#2c3e50">dfs() &#x2014; Code Execution Trace</text>
+  <text x="430" y="48" text-anchor="middle" fill="#777" font-size="13">Tracing dfs("A") on graph: A&#x2014;B, A&#x2014;C, B&#x2014;D, B&#x2014;E, C&#x2014;E</text>
+
+  <!-- ===== CODE REFERENCE (left side) ===== -->
+  <rect x="30" y="64" width="260" height="168" rx="8" fill="#1e1e1e"/>
+  <text x="40" y="80" fill="#888" font-size="9">Key lines:</text>
+  <text font-family="Consolas, 'Courier New', monospace" font-size="9">
+    <tspan x="40" y="96" fill="#9cdcfe">s</tspan><tspan fill="#ddd">.push(start);</tspan><tspan fill="#6a9955">  // no visited!</tspan>
+    <tspan x="40" y="112" fill="#c586c0">while</tspan><tspan fill="#ddd"> (!s.empty()) {</tspan>
+    <tspan x="50" y="128" fill="#9cdcfe">current</tspan><tspan fill="#ddd"> = s.top(); s.pop();</tspan>
+    <tspan x="50" y="144" fill="#c586c0">if</tspan><tspan fill="#ddd"> (visited) </tspan><tspan fill="#c586c0">continue</tspan><tspan fill="#ddd">;</tspan>
+    <tspan x="50" y="160" fill="#ddd">visited.insert(current);</tspan>
+    <tspan x="50" y="176" fill="#9cdcfe">result</tspan><tspan fill="#ddd">.push_back(current);</tspan>
+    <tspan x="50" y="192" fill="#c586c0">for</tspan><tspan fill="#ddd"> (it = nbrs.rbegin()..rend())</tspan>
+    <tspan x="60" y="208" fill="#c586c0">if</tspan><tspan fill="#ddd"> (!visited) s.push(*it);</tspan>
+    <tspan x="40" y="224" fill="#c586c0">return</tspan><tspan fill="#ddd"> result;</tspan>
+  </text>
+
+  <!-- ===== GRAPH REFERENCE ===== -->
+  <rect x="340" y="64" width="200" height="168" rx="8" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <text x="440" y="82" text-anchor="middle" fill="#2c3e50" font-size="11" font-weight="bold">The Graph</text>
+
+  <circle cx="420" cy="115" r="14" fill="#eaf2f8" stroke="#27ae60" stroke-width="2"/>
+  <text x="420" y="120" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">A</text>
+
+  <circle cx="390" cy="160" r="14" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="390" y="165" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">B</text>
+  <circle cx="460" cy="160" r="14" fill="white" stroke="#999" stroke-width="1.5"/>
+  <text x="460" y="165" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">C</text>
+
+  <circle cx="370" cy="205" r="14" fill="white" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="370" y="210" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">D</text>
+  <circle cx="420" cy="205" r="14" fill="white" stroke="#999" stroke-width="1.5"/>
+  <text x="420" y="210" text-anchor="middle" fill="#2c3e50" font-size="10" font-weight="bold">E</text>
+
+  <line x1="412" y1="127" x2="396" y2="148" stroke="#bbb" stroke-width="1.2"/>
+  <line x1="428" y1="127" x2="454" y2="148" stroke="#bbb" stroke-width="1.2"/>
+  <line x1="380" y1="172" x2="374" y2="193" stroke="#bbb" stroke-width="1.2"/>
+  <line x1="400" y1="172" x2="414" y2="193" stroke="#bbb" stroke-width="1.2"/>
+  <line x1="454" y1="172" x2="426" y2="193" stroke="#bbb" stroke-width="1.2"/>
+
+  <!-- DFS path -->
+  <path d="M 412,127 L 396,148 L 374,193" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="5,3" opacity="0.5"/>
+
+  <!-- ===== VARIABLE LEGEND ===== -->
+  <rect x="558" y="64" width="272" height="184" rx="8" fill="#fdf2f2" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="694" y="84" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="bold">Variable Legend</text>
+
+  <text x="574" y="102" fill="#c0392b" font-size="10" font-weight="bold" font-family="Consolas, monospace">s</text>
+  <text x="594" y="102" fill="#555" font-size="10">The stack (LIFO). Most recent on top.</text>
+  <text x="594" y="114" fill="#888" font-size="9">push = <tspan fill="#555" font-family="Consolas, monospace">s.push()</tspan>, pop = <tspan fill="#555" font-family="Consolas, monospace">s.top() + s.pop()</tspan></text>
+
+  <text x="574" y="132" fill="#c0392b" font-size="10" font-weight="bold" font-family="Consolas, monospace">current</text>
+  <text x="632" y="132" fill="#555" font-size="10">Vertex just popped from top.</text>
+
+  <text x="574" y="150" fill="#c0392b" font-size="10" font-weight="bold" font-family="Consolas, monospace">visited</text>
+  <text x="632" y="150" fill="#555" font-size="10">Set of vertices already processed.</text>
+
+  <text x="574" y="168" fill="#c0392b" font-size="10" font-weight="bold" font-family="Consolas, monospace">result</text>
+  <text x="624" y="168" fill="#555" font-size="10">Output vector &#x2014; visit order returned.</text>
+
+  <line x1="574" y1="178" x2="814" y2="178" stroke="#c0392b" stroke-width="0.5" opacity="0.5"/>
+  <text x="574" y="194" fill="#555" font-size="10">Check visited at <tspan font-weight="bold" fill="#c0392b">pop</tspan> time &#x2192; duplicates</text>
+  <text x="574" y="208" fill="#555" font-size="10">skipped with <tspan font-family="Consolas, monospace" font-size="9">continue</tspan>.</text>
+  <text x="574" y="224" fill="#555" font-size="10">Push neighbors in reverse so the</text>
+  <text x="574" y="236" fill="#555" font-size="10"><tspan font-weight="bold">first</tspan> neighbor is last-in = on <tspan font-weight="bold">top</tspan>.</text>
+
+  <!-- ===== TRACE TABLE ===== -->
+  <text x="430" y="256" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">Execution Trace: dfs("A")</text>
+
+  <!-- Header -->
+  <rect x="30" y="266" width="800" height="26" rx="6" fill="#c0392b"/>
+  <text x="60" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Step</text>
+  <text x="180" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Code Line</text>
+  <text x="380" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">s (top &#x2192; bottom)</text>
+  <text x="540" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">visited</text>
+  <text x="680" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">current</text>
+  <text x="780" y="284" text-anchor="middle" fill="white" font-size="10" font-weight="bold">result</text>
+
+  <!-- Step 0: Push A -->
+  <rect x="30" y="296" width="800" height="32" fill="#fdf2f2"/>
+  <text x="60" y="316" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">0</text>
+  <text x="180" y="316" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">s.push("A")</text>
+  <text x="380" y="316" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">[A]</text>
+  <text x="540" y="316" text-anchor="middle" fill="#bbb" font-size="10">{ }</text>
+  <text x="680" y="316" text-anchor="middle" fill="#bbb" font-size="10">&#x2014;</text>
+  <text x="780" y="316" text-anchor="middle" fill="#bbb" font-size="10">[ ]</text>
+
+  <!-- Step 1: Pop A, not visited, mark it, push C,B (reverse of B,C) -->
+  <rect x="30" y="332" width="800" height="50" fill="white"/>
+  <text x="60" y="360" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">1</text>
+  <text x="180" y="348" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#27ae60">"A"</tspan></text>
+  <text x="180" y="360" text-anchor="middle" fill="#555" font-size="10">visited? <tspan fill="#27ae60" font-weight="bold">No</tspan> &#x2192; mark + push to result</text>
+  <text x="180" y="372" text-anchor="middle" fill="#888" font-size="9">A's nbrs=[B,C]. Push C then B (last-in = top)</text>
+  <text x="380" y="360" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[B, C]</text>
+  <text x="380" y="374" text-anchor="middle" fill="#888" font-size="8">B on top &#x2192; popped next</text>
+  <text x="540" y="360" text-anchor="middle" fill="#555" font-size="10">{A}</text>
+  <text x="680" y="360" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">A</text>
+  <text x="780" y="360" text-anchor="middle" fill="#27ae60" font-size="11" font-weight="bold">[A]</text>
+
+  <!-- Step 2: Pop B, not visited, mark it, push E,D (reverse of D,E) -->
+  <rect x="30" y="386" width="800" height="50" fill="#fdf2f2"/>
+  <text x="60" y="414" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">2</text>
+  <text x="180" y="402" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#c0392b">"B"</tspan></text>
+  <text x="180" y="414" text-anchor="middle" fill="#555" font-size="10">visited? <tspan fill="#27ae60" font-weight="bold">No</tspan> &#x2192; mark + push to result</text>
+  <text x="180" y="426" text-anchor="middle" fill="#888" font-size="9">B's nbrs=[A,D,E]. A visited. Push E then D (last-in = top)</text>
+  <text x="380" y="414" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[D, E, C]</text>
+  <text x="380" y="428" text-anchor="middle" fill="#888" font-size="8">D on top</text>
+  <text x="540" y="414" text-anchor="middle" fill="#555" font-size="10">{A, B}</text>
+  <text x="680" y="414" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">B</text>
+  <text x="780" y="414" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[A, B]</text>
+
+  <!-- Step 3: Pop D, not visited, mark it -->
+  <rect x="30" y="440" width="800" height="50" fill="white"/>
+  <text x="60" y="468" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">3</text>
+  <text x="180" y="456" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#c0392b">"D"</tspan></text>
+  <text x="180" y="468" text-anchor="middle" fill="#555" font-size="10">visited? <tspan fill="#27ae60" font-weight="bold">No</tspan> &#x2192; mark + push to result</text>
+  <text x="180" y="480" text-anchor="middle" fill="#888" font-size="9">neighbors of D: [B] &#x2192; B visited, push none</text>
+  <text x="380" y="468" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[E, C]</text>
+  <text x="540" y="468" text-anchor="middle" fill="#555" font-size="10">{A, B, D}</text>
+  <text x="680" y="468" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">D</text>
+  <text x="780" y="468" text-anchor="middle" fill="#c0392b" font-size="11" font-weight="bold">[A, B, D]</text>
+
+  <!-- Step 4: Pop E, not visited, mark it -->
+  <rect x="30" y="494" width="800" height="50" fill="#fdf2f2"/>
+  <text x="60" y="522" text-anchor="middle" fill="#999" font-size="11" font-weight="bold">4</text>
+  <text x="180" y="510" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#555">"E"</tspan></text>
+  <text x="180" y="522" text-anchor="middle" fill="#555" font-size="10">visited? <tspan fill="#27ae60" font-weight="bold">No</tspan> &#x2192; mark + push to result</text>
+  <text x="180" y="534" text-anchor="middle" fill="#888" font-size="9">neighbors of E: [B,C] &#x2192; B visited, push C (already there)</text>
+  <text x="380" y="522" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[C, C]</text>
+  <text x="380" y="536" text-anchor="middle" fill="#e67e22" font-size="8">C is on stack twice!</text>
+  <text x="540" y="522" text-anchor="middle" fill="#555" font-size="10">{A, B, D, E}</text>
+  <text x="680" y="522" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">E</text>
+  <text x="780" y="522" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[A,B,D,E]</text>
+
+  <!-- Step 5: Pop C (first copy), not visited, mark it -->
+  <rect x="30" y="548" width="800" height="44" fill="white"/>
+  <text x="60" y="574" text-anchor="middle" fill="#999" font-size="11" font-weight="bold">5</text>
+  <text x="180" y="564" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#555">"C"</tspan></text>
+  <text x="180" y="576" text-anchor="middle" fill="#555" font-size="10">visited? <tspan fill="#27ae60" font-weight="bold">No</tspan> &#x2192; mark + push to result</text>
+  <text x="180" y="588" text-anchor="middle" fill="#888" font-size="9">neighbors all visited, push none</text>
+  <text x="380" y="574" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[C]</text>
+  <text x="380" y="588" text-anchor="middle" fill="#888" font-size="8">leftover duplicate</text>
+  <text x="540" y="574" text-anchor="middle" fill="#555" font-size="10">{A, B, C, D, E}</text>
+  <text x="680" y="574" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">C</text>
+  <text x="780" y="574" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">[A,B,D,E,C]</text>
+
+  <!-- Step 6: Pop C (duplicate), already visited, SKIP -->
+  <rect x="30" y="596" width="800" height="36" fill="#fef9e7"/>
+  <text x="60" y="618" text-anchor="middle" fill="#e67e22" font-size="11" font-weight="bold">6</text>
+  <text x="180" y="612" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">current = s.top() <tspan fill="#e67e22">"C"</tspan></text>
+  <text x="180" y="624" text-anchor="middle" fill="#e67e22" font-size="10" font-weight="bold">visited? Yes &#x2192; continue (SKIP)</text>
+  <text x="380" y="618" text-anchor="middle" fill="#bbb" font-size="11">empty</text>
+  <text x="540" y="618" text-anchor="middle" fill="#555" font-size="10">{A, B, C, D, E}</text>
+  <text x="680" y="618" text-anchor="middle" fill="#e67e22" font-size="11">C (skipped)</text>
+  <text x="780" y="618" text-anchor="middle" fill="#555" font-size="11">unchanged</text>
+
+  <!-- Done -->
+  <rect x="30" y="636" width="800" height="30" fill="#fdf2f2"/>
+  <text x="60" y="656" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">&#x2713;</text>
+  <text x="180" y="656" text-anchor="middle" fill="#555" font-size="10" font-family="Consolas, monospace">s.empty() &#x2192; exit loop</text>
+  <text x="780" y="656" text-anchor="middle" fill="#c0392b" font-size="12" font-weight="bold">[A,B,D,E,C]</text>
+
+  <!-- ===== FOOTER ===== -->
+  <rect x="30" y="676" width="800" height="44" rx="8" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1"/>
+  <text x="430" y="694" text-anchor="middle" fill="#333" font-size="12" font-weight="bold">Visit order: A &#x2192; B &#x2192; D &#x2192; E &#x2192; C (deep dive A&#x2192;B&#x2192;D, then backtrack)</text>
+  <text x="430" y="712" text-anchor="middle" fill="#555" font-size="11">Step 6 shows why DFS checks visited at pop time &#x2014; duplicates on the stack are harmlessly skipped.</text>
+</svg>

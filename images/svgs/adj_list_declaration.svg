@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Breaking Down the Declaration</text>
+
+  <!-- Full declaration -->
+  <rect x="80" y="50" width="740" height="40" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1.2"/>
+  <text x="450" y="76" text-anchor="middle" font-size="14" fill="#2c3e50" font-family="Consolas, monospace">
+    <tspan fill="#8e44ad">std::unordered_map</tspan>&lt;<tspan fill="#2980b9">std::string</tspan>, <tspan fill="#27ae60">std::vector</tspan>&lt;<tspan fill="#c0392b">std::string</tspan>&gt;&gt; <tspan fill="#2c3e50" font-weight="bold">adj_list_</tspan>;
+  </text>
+
+  <!-- Bracket lines pointing down from each part -->
+  <!-- unordered_map -->
+  <line x1="210" y1="90" x2="210" y2="115" stroke="#8e44ad" stroke-width="1.5"/>
+  <circle cx="210" cy="118" r="3" fill="#8e44ad"/>
+
+  <!-- string (key) -->
+  <line x1="370" y1="90" x2="370" y2="115" stroke="#2980b9" stroke-width="1.5"/>
+  <circle cx="370" cy="118" r="3" fill="#2980b9"/>
+
+  <!-- vector<string> -->
+  <line x1="530" y1="90" x2="530" y2="115" stroke="#27ae60" stroke-width="1.5"/>
+  <circle cx="530" cy="118" r="3" fill="#27ae60"/>
+
+  <!-- adj_list_ -->
+  <line x1="700" y1="90" x2="700" y2="115" stroke="#2c3e50" stroke-width="1.5"/>
+  <circle cx="700" cy="118" r="3" fill="#2c3e50"/>
+
+  <!-- ===== PART 1: unordered_map ===== -->
+  <rect x="60" y="130" width="260" height="70" rx="8" fill="#f3e5f5" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="190" y="152" text-anchor="middle" fill="#8e44ad" font-size="13" font-weight="bold" font-family="Consolas, monospace">std::unordered_map</text>
+  <text x="190" y="170" text-anchor="middle" fill="#555" font-size="11">The container &#x2014; a hash table</text>
+  <text x="190" y="185" text-anchor="middle" fill="#555" font-size="11">that stores key&#x2192;value pairs</text>
+
+  <!-- ===== PART 2: string (key) ===== -->
+  <rect x="340" y="130" width="180" height="70" rx="8" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="430" y="152" text-anchor="middle" fill="#2980b9" font-size="13" font-weight="bold" font-family="Consolas, monospace">std::string</text>
+  <text x="430" y="170" text-anchor="middle" fill="#555" font-size="11">The <tspan font-weight="bold">key</tspan> type</text>
+  <text x="430" y="185" text-anchor="middle" fill="#555" font-size="11">vertex name (e.g. "Alice")</text>
+
+  <!-- ===== PART 3: vector<string> ===== -->
+  <rect x="540" y="130" width="180" height="70" rx="8" fill="#f0faf0" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="630" y="152" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold" font-family="Consolas, monospace">std::vector&lt;string&gt;</text>
+  <text x="630" y="170" text-anchor="middle" fill="#555" font-size="11">The <tspan font-weight="bold">value</tspan> type</text>
+  <text x="630" y="185" text-anchor="middle" fill="#555" font-size="11">neighbor list (e.g. {"Bob","Eve"})</text>
+
+  <!-- ===== PART 4: adj_list_ ===== -->
+  <rect x="740" y="130" width="130" height="70" rx="8" fill="#f5f5f5" stroke="#2c3e50" stroke-width="1.5"/>
+  <text x="805" y="152" text-anchor="middle" fill="#2c3e50" font-size="13" font-weight="bold" font-family="Consolas, monospace">adj_list_</text>
+  <text x="805" y="170" text-anchor="middle" fill="#555" font-size="11">The variable name</text>
+  <text x="805" y="185" text-anchor="middle" fill="#555" font-size="11">(our graph data)</text>
+
+  <!-- ===== VISUAL EXAMPLE ===== -->
+  <text x="450" y="228" text-anchor="middle" fill="#2c3e50" font-size="14" font-weight="bold">What It Looks Like in Memory</text>
+
+  <!-- Alice row -->
+  <rect x="120" y="245" width="70" height="30" rx="5" fill="#2980b9"/>
+  <text x="155" y="265" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Alice</text>
+  <text x="205" y="265" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="225" y="248" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="247" y="265" text-anchor="middle" fill="#2c3e50" font-size="10">Bob</text>
+  <rect x="275" y="248" width="55" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="302" y="265" text-anchor="middle" fill="#2c3e50" font-size="10">Carol</text>
+
+  <!-- Bob row -->
+  <rect x="120" y="283" width="70" height="30" rx="5" fill="#2980b9"/>
+  <text x="155" y="303" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Bob</text>
+  <text x="205" y="303" fill="#999" font-size="14">&#x2192;</text>
+  <rect x="225" y="286" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="250" y="303" text-anchor="middle" fill="#2c3e50" font-size="10">Alice</text>
+  <rect x="280" y="286" width="50" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="305" y="303" text-anchor="middle" fill="#2c3e50" font-size="10">Dave</text>
+  <rect x="335" y="286" width="45" height="24" rx="4" fill="white" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="357" y="303" text-anchor="middle" fill="#2c3e50" font-size="10">Eve</text>
+
+  <!-- Color-coded labels -->
+  <rect x="470" y="245" width="12" height="12" rx="2" fill="#2980b9"/>
+  <text x="490" y="256" fill="#555" font-size="12">= key (<tspan font-weight="bold" fill="#2980b9">string</tspan> &#x2014; vertex name)</text>
+
+  <rect x="470" y="268" width="12" height="12" rx="2" fill="white" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="490" y="279" fill="#555" font-size="12">= value (<tspan font-weight="bold" fill="#27ae60">vector&lt;<tspan fill="#c0392b">string</tspan>&gt;</tspan> &#x2014; neighbor list)</text>
+
+  <!-- Reading it aloud -->
+  <rect x="60" y="325" width="780" height="45" rx="8" fill="#fff3e0" stroke="#e67e22" stroke-width="1.2"/>
+  <text x="450" y="345" text-anchor="middle" fill="#e67e22" font-size="13" font-weight="bold">Read It Aloud</text>
+  <text x="450" y="362" text-anchor="middle" fill="#555" font-size="12">"An unordered map from <tspan font-weight="bold" fill="#2980b9">string</tspan> to <tspan font-weight="bold" fill="#27ae60">vector of <tspan fill="#c0392b">strings</tspan></tspan>, called <tspan font-weight="bold">adj_list_</tspan>"</text>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 335" font-family="'Segoe UI', Arial, sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">Section 1, Step 3: add_edge("Bob", "Dave")</text>
+  <text x="450" y="48" text-anchor="middle" fill="#777" font-size="12">Bob already exists &#x2014; create Dave, link both directions</text>
+
+  <!-- What happens -->
+  <rect x="30" y="65" width="420" height="140" rx="10" fill="#f0faf0" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="50" y="88" fill="#2c3e50" font-size="12" font-family="Consolas, monospace">g.add_edge(<tspan fill="#2980b9">"Bob"</tspan>, <tspan fill="#2980b9">"Dave"</tspan>);</text>
+  <text x="240" y="108" text-anchor="middle" fill="#27ae60" font-size="13" font-weight="bold">What Happens Inside</text>
+
+  <circle cx="55" cy="128" r="8" fill="#27ae60"/>
+  <text x="55" y="132" text-anchor="middle" fill="white" font-size="9" font-weight="bold">1</text>
+  <text x="75" y="132" fill="#2c3e50" font-size="11">Bob exists, Dave doesn't &#x2192; create key "Dave"</text>
+
+  <circle cx="55" cy="154" r="8" fill="#27ae60"/>
+  <text x="55" y="158" text-anchor="middle" fill="white" font-size="9" font-weight="bold">2</text>
+  <text x="75" y="158" fill="#2c3e50" font-size="11">Add <tspan font-weight="bold" fill="#e67e22">"Dave"</tspan> to Bob's list &#x2014; now [Alice, <tspan font-weight="bold" fill="#e67e22">Dave</tspan>]</text>
+
+  <circle cx="55" cy="180" r="8" fill="#27ae60"/>
+  <text x="55" y="184" text-anchor="middle" fill="white" font-size="9" font-weight="bold">3</text>
+  <text x="75" y="184" fill="#2c3e50" font-size="11">Add <tspan font-weight="bold" fill="#e67e22">"Bob"</tspan> to Dave's list &#x2014; now [<tspan font-weight="bold" fill="#e67e22">Bob</tspan>]</text>
+
+  <!-- Resulting map -->
+  <rect x="470" y="65" width="400" height="180" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="670" y="88" text-anchor="middle" fill="#2980b9" font-size="13" font-weight="bold">adj_list_ After Step 3</text>
+
+  <rect x="500" y="105" width="55" height="26" rx="5" fill="#27ae60"/>
+  <text x="527" y="123" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Alice</text>
+  <text x="565" y="123" fill="#999" font-size="12">&#x2192;</text>
+  <rect x="580" y="108" width="40" height="20" rx="4" fill="white" stroke="#2980b9" stroke-width="1"/>
+  <text x="600" y="122" text-anchor="middle" fill="#2c3e50" font-size="10">Bob</text>
+  <rect x="625" y="108" width="48" height="20" rx="4" fill="white" stroke="#2980b9" stroke-width="1"/>
+  <text x="649" y="122" text-anchor="middle" fill="#2c3e50" font-size="10">Carol</text>
+
+  <rect x="500" y="138" width="55" height="26" rx="5" fill="#27ae60"/>
+  <text x="527" y="156" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Bob</text>
+  <text x="565" y="156" fill="#999" font-size="12">&#x2192;</text>
+  <rect x="580" y="141" width="45" height="20" rx="4" fill="white" stroke="#2980b9" stroke-width="1"/>
+  <text x="602" y="155" text-anchor="middle" fill="#2c3e50" font-size="10">Alice</text>
+  <rect x="630" y="141" width="45" height="20" rx="4" fill="#fff3e0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="652" y="155" text-anchor="middle" fill="#e67e22" font-size="10" font-weight="bold">Dave</text>
+
+  <rect x="500" y="171" width="55" height="26" rx="5" fill="#27ae60"/>
+  <text x="527" y="189" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Carol</text>
+  <text x="565" y="189" fill="#999" font-size="12">&#x2192;</text>
+  <rect x="580" y="174" width="45" height="20" rx="4" fill="white" stroke="#2980b9" stroke-width="1"/>
+  <text x="602" y="188" text-anchor="middle" fill="#2c3e50" font-size="10">Alice</text>
+
+  <rect x="500" y="204" width="55" height="26" rx="5" fill="#fff3e0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="527" y="222" text-anchor="middle" fill="#e67e22" font-size="10" font-weight="bold">Dave</text>
+  <text x="565" y="222" fill="#999" font-size="12">&#x2192;</text>
+  <rect x="580" y="207" width="40" height="20" rx="4" fill="#fff3e0" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="600" y="221" text-anchor="middle" fill="#e67e22" font-size="10" font-weight="bold">Bob</text>
+
+  <!-- Stats -->
+  <rect x="30" y="265" width="840" height="55" rx="8" fill="#f5f5f5" stroke="#ccc" stroke-width="1.2"/>
+  <text x="150" y="293" text-anchor="middle" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Vertices:</tspan> 4</text>
+  <text x="350" y="293" text-anchor="middle" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Edges:</tspan> 3</text>
+  <text x="600" y="293" text-anchor="middle" fill="#2c3e50" font-size="12"><tspan font-weight="bold">Total map entries:</tspan> 6</text>
+  <text x="450" y="311" text-anchor="middle" fill="#777" font-size="11">Bob's list keeps growing as more neighbors are added</text>
+</svg>

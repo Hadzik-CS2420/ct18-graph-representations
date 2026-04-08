@@ -24,10 +24,12 @@ Graph::Graph() {}
 // add_vertex() — add a vertex if it doesn't exist
 // ---------------------------------------------------------------------------
 //
+// ? SEE DIAGRAM: images/cpp_diagrams.md #1 — idempotent insertion with find()/end()
+//
 // ! DISCUSSION: How add_vertex works.
 //   - check if the key already exists in the map
 //   - if not, insert it with an empty neighbor list
-//   - if it exists, do nothing (idempotent)
+//   - if it exists, do nothing (safe to call multiple times)
 //
 void Graph::add_vertex(const std::string& vertex) {
     // TODO: insert vertex into adj_list_ if not already present
@@ -37,7 +39,7 @@ void Graph::add_vertex(const std::string& vertex) {
 // add_edge() — add an undirected edge between two vertices
 // ---------------------------------------------------------------------------
 //
-// ? SEE DIAGRAM: images/cpp_diagrams.md #1 — undirected edge adds to both lists
+// ? SEE DIAGRAM: images/cpp_diagrams.md #2 — undirected edge adds to both lists
 //
 // ! DISCUSSION: Undirected means both directions.
 //   - add_edge("A", "B") adds B to A's neighbor list AND A to B's neighbor list
@@ -81,7 +83,7 @@ std::vector<std::string> Graph::neighbors(const std::string& vertex) const {
 // 4. BFS — Breadth-First Search
 // =============================================================================
 //
-// ? SEE DIAGRAM: images/cpp_diagrams.md #2 — BFS with queue, level by level
+// ? SEE DIAGRAM: images/cpp_diagrams.md #8 — BFS with queue, level by level
 //
 // ! DISCUSSION: BFS algorithm.
 //   - use a QUEUE (FIFO) — process vertices in the order they were discovered
@@ -106,7 +108,7 @@ std::vector<std::string> Graph::bfs(const std::string& start) const {
 // 5. DFS — Depth-First Search
 // =============================================================================
 //
-// ? SEE DIAGRAM: images/cpp_diagrams.md #3 — DFS with stack, exploring deep first
+// ? SEE DIAGRAM: images/cpp_diagrams.md #9 — DFS with stack, exploring deep first
 //
 // ! DISCUSSION: DFS algorithm.
 //   - use a STACK (LIFO) — always explore the most recently discovered vertex
