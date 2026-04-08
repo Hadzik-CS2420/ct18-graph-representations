@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400">
+  <style>
+    text { font-family: 'Segoe UI', system-ui, sans-serif; }
+  </style>
+
+  <!-- Background -->
+  <rect width="900" height="400" rx="12" fill="#1e1e2e"/>
+
+  <!-- Title -->
+  <text x="450" y="35" text-anchor="middle" fill="#cdd6f4" font-size="16" font-weight="bold">BFS vs DFS — Two Ways to Explore a Graph</text>
+
+  <!-- ===== BFS SIDE ===== -->
+  <rect x="30" y="55" width="410" height="320" rx="10" fill="#2a2a3e" stroke="#45475a" stroke-width="1"/>
+  <text x="235" y="82" text-anchor="middle" fill="#a6e3a1" font-size="14" font-weight="bold">BFS — Breadth-First Search</text>
+  <text x="235" y="100" text-anchor="middle" fill="#6c7086" font-size="11">Uses a QUEUE (FIFO) — level by level</text>
+
+  <!-- BFS graph -->
+  <!-- Level 0 -->
+  <circle cx="235" cy="140" r="18" fill="#a6e3a1" fill-opacity="0.2" stroke="#a6e3a1" stroke-width="2"/>
+  <text x="235" y="145" text-anchor="middle" fill="#a6e3a1" font-size="12" font-weight="bold">A</text>
+  <text x="290" y="140" fill="#a6e3a1" font-size="10" font-weight="bold">1st</text>
+
+  <!-- Level 1 -->
+  <circle cx="165" cy="200" r="18" fill="#89b4fa" fill-opacity="0.15" stroke="#89b4fa" stroke-width="2"/>
+  <text x="165" y="205" text-anchor="middle" fill="#89b4fa" font-size="12" font-weight="bold">B</text>
+  <text x="120" y="200" fill="#89b4fa" font-size="10" font-weight="bold">2nd</text>
+
+  <circle cx="305" cy="200" r="18" fill="#89b4fa" fill-opacity="0.15" stroke="#89b4fa" stroke-width="2"/>
+  <text x="305" y="205" text-anchor="middle" fill="#89b4fa" font-size="12" font-weight="bold">C</text>
+  <text x="345" y="200" fill="#89b4fa" font-size="10" font-weight="bold">3rd</text>
+
+  <!-- Level 2 -->
+  <circle cx="130" cy="265" r="18" fill="#cba6f7" fill-opacity="0.15" stroke="#cba6f7" stroke-width="2"/>
+  <text x="130" y="270" text-anchor="middle" fill="#cba6f7" font-size="12" font-weight="bold">D</text>
+  <text x="90" y="265" fill="#cba6f7" font-size="10" font-weight="bold">4th</text>
+
+  <circle cx="235" cy="265" r="18" fill="#cba6f7" fill-opacity="0.15" stroke="#cba6f7" stroke-width="2"/>
+  <text x="235" y="270" text-anchor="middle" fill="#cba6f7" font-size="12" font-weight="bold">E</text>
+  <text x="275" y="265" fill="#cba6f7" font-size="10" font-weight="bold">5th</text>
+
+  <!-- BFS edges -->
+  <line x1="223" y1="155" x2="177" y2="185" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="247" y1="155" x2="293" y2="185" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="153" y1="215" x2="142" y2="250" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="177" y1="215" x2="223" y2="250" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="293" y1="215" x2="247" y2="250" stroke="#585b70" stroke-width="1.5"/>
+
+  <!-- BFS level brackets -->
+  <text x="380" y="140" fill="#a6e3a1" font-size="10">dist 0</text>
+  <text x="380" y="200" fill="#89b4fa" font-size="10">dist 1</text>
+  <text x="380" y="265" fill="#cba6f7" font-size="10">dist 2</text>
+
+  <!-- BFS result -->
+  <rect x="55" y="300" width="360" height="28" rx="5" fill="#313244"/>
+  <text x="65" y="319" fill="#6c7086" font-size="11">Order:</text>
+  <text x="115" y="319" fill="#a6e3a1" font-size="12" font-weight="bold">A</text>
+  <text x="135" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="155" y="319" fill="#89b4fa" font-size="12" font-weight="bold">B</text>
+  <text x="175" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="195" y="319" fill="#89b4fa" font-size="12" font-weight="bold">C</text>
+  <text x="215" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="235" y="319" fill="#cba6f7" font-size="12" font-weight="bold">D</text>
+  <text x="255" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="275" y="319" fill="#cba6f7" font-size="12" font-weight="bold">E</text>
+
+  <text x="235" y="358" text-anchor="middle" fill="#a6e3a1" font-size="11" font-weight="bold">Finds shortest path (unweighted)</text>
+  <text x="235" y="373" text-anchor="middle" fill="#6c7086" font-size="10">"How far is X from Y?"</text>
+
+  <!-- ===== DFS SIDE ===== -->
+  <rect x="460" y="55" width="410" height="320" rx="10" fill="#2a2a3e" stroke="#45475a" stroke-width="1"/>
+  <text x="665" y="82" text-anchor="middle" fill="#f38ba8" font-size="14" font-weight="bold">DFS — Depth-First Search</text>
+  <text x="665" y="100" text-anchor="middle" fill="#6c7086" font-size="11">Uses a STACK (LIFO) — dive deep first</text>
+
+  <!-- DFS graph -->
+  <circle cx="665" cy="140" r="18" fill="#a6e3a1" fill-opacity="0.2" stroke="#a6e3a1" stroke-width="2"/>
+  <text x="665" y="145" text-anchor="middle" fill="#a6e3a1" font-size="12" font-weight="bold">A</text>
+  <text x="720" y="140" fill="#a6e3a1" font-size="10" font-weight="bold">1st</text>
+
+  <circle cx="595" cy="200" r="18" fill="#f38ba8" fill-opacity="0.15" stroke="#f38ba8" stroke-width="2"/>
+  <text x="595" y="205" text-anchor="middle" fill="#f38ba8" font-size="12" font-weight="bold">B</text>
+  <text x="555" y="200" fill="#f38ba8" font-size="10" font-weight="bold">2nd</text>
+
+  <circle cx="735" cy="200" r="18" fill="#585b70" fill-opacity="0.15" stroke="#585b70" stroke-width="2"/>
+  <text x="735" y="205" text-anchor="middle" fill="#585b70" font-size="12" font-weight="bold">C</text>
+  <text x="775" y="200" fill="#585b70" font-size="10">5th</text>
+
+  <circle cx="560" cy="265" r="18" fill="#f38ba8" fill-opacity="0.15" stroke="#f38ba8" stroke-width="2"/>
+  <text x="560" y="270" text-anchor="middle" fill="#f38ba8" font-size="12" font-weight="bold">D</text>
+  <text x="520" y="265" fill="#f38ba8" font-size="10" font-weight="bold">3rd</text>
+
+  <circle cx="665" cy="265" r="18" fill="#585b70" fill-opacity="0.15" stroke="#585b70" stroke-width="2"/>
+  <text x="665" y="270" text-anchor="middle" fill="#585b70" font-size="12" font-weight="bold">E</text>
+  <text x="705" y="265" fill="#585b70" font-size="10">4th</text>
+
+  <!-- DFS edges -->
+  <line x1="653" y1="155" x2="607" y2="185" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="677" y1="155" x2="723" y2="185" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="583" y1="215" x2="572" y2="250" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="607" y1="215" x2="653" y2="250" stroke="#585b70" stroke-width="1.5"/>
+  <line x1="723" y1="215" x2="677" y2="250" stroke="#585b70" stroke-width="1.5"/>
+
+  <!-- DFS dive path -->
+  <path d="M 653,155 L 607,185 L 572,250" fill="none" stroke="#f38ba8" stroke-width="2.5" stroke-dasharray="6,3" opacity="0.6"/>
+
+  <!-- DFS result -->
+  <rect x="485" y="300" width="360" height="28" rx="5" fill="#313244"/>
+  <text x="495" y="319" fill="#6c7086" font-size="11">Order:</text>
+  <text x="545" y="319" fill="#a6e3a1" font-size="12" font-weight="bold">A</text>
+  <text x="565" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="585" y="319" fill="#f38ba8" font-size="12" font-weight="bold">B</text>
+  <text x="605" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="625" y="319" fill="#f38ba8" font-size="12" font-weight="bold">D</text>
+  <text x="645" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="665" y="319" fill="#585b70" font-size="12" font-weight="bold">E</text>
+  <text x="685" y="319" fill="#6c7086" font-size="11">-></text>
+  <text x="705" y="319" fill="#585b70" font-size="12" font-weight="bold">C</text>
+
+  <text x="665" y="358" text-anchor="middle" fill="#f38ba8" font-size="11" font-weight="bold">Explores one path completely first</text>
+  <text x="665" y="373" text-anchor="middle" fill="#6c7086" font-size="10">"Is there a path? Cycle detection, maze solving"</text>
+
+  <!-- Bottom: both O(V+E) -->
+  <text x="450" y="395" text-anchor="middle" fill="#f9e2af" font-size="12" font-weight="bold">Both are O(V + E) — visit every vertex and edge exactly once</text>
+</svg>
