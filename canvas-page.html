@@ -1,0 +1,312 @@
+<!-- Canvas LMS HTML Fragment — paste into the Rich Content Editor (HTML view) -->
+
+<h2>👨‍💻 Code-Together Activity 17: Graph Representations & Traversals</h2>
+
+<h3>&#x1F3AF; Overview</h3>
+<p>An in-class code-together activity implementing an <strong>undirected graph</strong> using an adjacency list (<code>unordered_map&lt;string, vector&lt;string&gt;&gt;</code>). Students implement <code>Graph.cpp</code> guided by the instructor, building add_vertex, add_edge, query methods (has_vertex, has_edge, vertex_count, edge_count, neighbors), and two traversal algorithms: <strong>BFS</strong> (breadth-first search using a queue) and <strong>DFS</strong> (depth-first search using a stack). The activity builds a social network graph and demonstrates how BFS visits level-by-level while DFS dives deep before backtracking.</p>
+
+<h3>&#x1F4D6; Learning Objectives</h3>
+<p>By completing this activity, you will be able to:</p>
+<ul>
+    <li>Implement an <strong>adjacency list</strong> using <code>unordered_map</code> and explain why it is space-efficient for sparse graphs: O(V + E)</li>
+    <li>Implement <strong>add_vertex</strong> and <strong>add_edge</strong> for an undirected graph, understanding that each edge is stored in both directions</li>
+    <li>Implement <strong>has_vertex</strong>, <strong>has_edge</strong>, <strong>vertex_count</strong>, <strong>edge_count</strong>, and <strong>neighbors</strong> using the <code>find()</code> / <code>end()</code> pattern on unordered_map</li>
+    <li>Implement <strong>BFS</strong> using a queue and visited set, and explain why it finds shortest paths in unweighted graphs</li>
+    <li>Implement <strong>DFS</strong> using a stack and visited set, and explain why neighbors are pushed in reverse order</li>
+    <li>Compare <strong>BFS vs DFS</strong>: when to use each, how the data structure (queue vs stack) determines visit order, and why both are O(V + E)</li>
+</ul>
+
+<h3>&#x1F680; Getting Started</h3>
+
+<h4>Step 1: Accept the Assignment</h4>
+<p>Click the button below to create your personal repository:</p>
+<p><a style="display: inline-block; padding: 10px 24px; font-size: 1em; font-weight: 600; color: #fff; background-color: #0b874b; border-radius: 4px; text-decoration: none;" href="https://classroom.github.com/a/eNpoBCHz" target="_blank" rel="noopener">Accept Assignment on GitHub</a></p>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #fcf8e3; border: 1px solid #faebcc; color: #8a6d3b;">
+    <strong>Repository Access Issue?</strong><br />
+    If you don&#x2019;t see the repository after accepting, check your email for the GitHub invite.
+</div>
+
+<h4>Step 2: Clone in Visual Studio</h4>
+<ol>
+    <li>Open <strong>Visual Studio</strong></li>
+    <li>On the start window, click <strong>&#x201C;Clone a repository&#x201D;</strong></li>
+    <li>Paste your repository URL (from GitHub) into the <strong>Repository location</strong> field</li>
+    <li>Choose a local path and click <strong>Clone</strong></li>
+    <li>Visual Studio should automatically detect the CMake project and configure it</li>
+</ol>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #d9edf7; border: 1px solid #bce8f1; color: #31708f;">
+    Follow the <strong>Troubleshooting</strong> section at the bottom if CMake does not configure automatically.
+</div>
+
+<h4>Step 3: Wait for CMake Configuration</h4>
+<p>Visual Studio will automatically run CMake. Watch the <strong>Output</strong> window (<em>View &rarr; Output</em>, select <em>&#x201C;Show output from: CMake&#x201D;</em>) until you see:</p>
+<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 16px 20px; border-radius: 4px; overflow-x: auto; font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace; font-size: 0.875em; line-height: 1.6;">CMake generation finished.</pre>
+
+<h3>&#x1F4C1; Project Structure</h3>
+<pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 16px 20px; border-radius: 4px; font-family: 'Menlo', 'Monaco', 'Consolas', 'Courier New', monospace; font-size: 0.875em; line-height: 1.8;">ct17-graph-representations/
+&#x251C;&#x2500;&#x2500; CMakeLists.txt
+&#x251C;&#x2500;&#x2500; assignment.json
+&#x251C;&#x2500;&#x2500; README.md
+&#x251C;&#x2500;&#x2500; include/
+&#x2502;   &#x2514;&#x2500;&#x2500; Graph.h               # Class declaration + adjacency list data member
+&#x251C;&#x2500;&#x2500; src/
+&#x2502;   &#x251C;&#x2500;&#x2500; Graph.cpp             # Implementation (main teaching file &mdash; TODOs here)
+&#x2502;   &#x2514;&#x2500;&#x2500; main.cpp              # Demo driver: social network graph
+&#x251C;&#x2500;&#x2500; tests/
+&#x2502;   &#x2514;&#x2500;&#x2500; ct17_test.cpp         # Google Test suite
+&#x2514;&#x2500;&#x2500; images/
+    &#x251C;&#x2500;&#x2500; header_diagrams.md    # Diagrams for Graph.h (graph vs tree, adj list vs matrix)
+    &#x251C;&#x2500;&#x2500; cpp_diagrams.md       # Diagrams for Graph.cpp (code walkthroughs + traces)
+    &#x251C;&#x2500;&#x2500; main_diagrams.md      # Diagrams for main.cpp
+    &#x2514;&#x2500;&#x2500; svgs/                 # All SVG diagram files</pre>
+
+<h3>&#x1F4DD; What You&#x2019;ll Do</h3>
+<p>Work through <code>Graph.cpp</code> section by section, implementing each method as the instructor explains the concept. The file has TODOs for add_vertex, add_edge, has_vertex, has_edge, vertex_count, edge_count, neighbors, BFS, and DFS. The <code>print()</code> method is provided. After each section, run <code>main.cpp</code> to verify your output against the expected social network graph. Every function has a matching SVG diagram in <code>images/cpp_diagrams.md</code> showing the code walkthrough and step-by-step traces.</p>
+
+<h3>&#x1F4DA; Teaching Order</h3>
+<p>Work through the files in the order <code>main.cpp</code> calls them:</p>
+
+<h4>1. <code>Graph.h</code> &mdash; Class declaration and data member</h4>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Adjacency list declaration</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Why <code>unordered_map&lt;string, vector&lt;string&gt;&gt;</code> &mdash; O(1) vertex lookup, O(V+E) space</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Graph vs Tree</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Graphs can have cycles, multiple paths, and vertices with any number of connections</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Adjacency list vs matrix</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">List: O(V+E) space, fast neighbor iteration. Matrix: O(V&sup2;) space, O(1) edge lookup</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>2. <code>Graph.cpp</code> &mdash; Implementations (9 TODOs + print provided)</h4>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 1: Constructor</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Empty graph &mdash; the unordered_map starts empty, no initialization needed</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 2: add_vertex</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Idempotent insertion using <code>find()</code> / <code>end()</code> pattern; safe to call multiple times</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 2: add_edge</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Undirected = two push_back calls (forward + reverse link); auto-creates vertices</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 3: has_vertex</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">O(1) hash table lookup &mdash; <code>find() != end()</code></td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 3: has_edge</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Two-step lookup: find vertex in map, then linear search neighbor list with <code>std::find</code></td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 3: vertex_count / edge_count</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Map size for vertices; sum all neighbor sizes and divide by 2 for edges (structured bindings)</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 3: neighbors</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Find vertex, return <code>it-&gt;second</code> (the neighbor vector); return empty if not found</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 4: BFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Queue (FIFO) + visited set; mark visited at enqueue time; level-by-level = shortest path</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 5: DFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Stack (LIFO) + visited set; check visited at pop time; push in reverse order (rbegin/rend)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 6: print (provided)</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Structured bindings, nested loop with comma separation, hash order is non-deterministic</td>
+        </tr>
+    </tbody>
+</table>
+
+<h4>3. <code>main.cpp</code> &mdash; Demo driver (4 sections)</h4>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Section</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">What You&#x2019;ll Learn</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 1: Build a Graph</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Build social network with 5 vertices and 5 edges; verify counts and print adjacency list</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 2: Queries</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Test has_vertex, has_edge, neighbors on the social network graph</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 3: BFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">BFS from Alice &mdash; observe level-by-level visit order</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Section 4: DFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">DFS from Alice &mdash; observe depth-first dive, compare order with BFS</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F5BC;&#xFE0F; Diagrams</h3>
+<p>Diagrams are included in the <code>images/</code> folder and referenced in the source code comments. Every function has a code walkthrough SVG, and BFS/DFS have full execution traces:</p>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Diagram</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; text-align: left; background-color: #f5f5f5; font-weight: 700;">Shows</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>graph_vs_tree</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Graph vs tree comparison: cycles, multiple paths, any number of connections</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>adj_list_vs_matrix</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Adjacency list vs adjacency matrix: space and time tradeoffs</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>add_vertex_impl</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Code walkthrough: find()/end() pattern, idempotent definition</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>add_edge_impl</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Code walkthrough: dual push_back for undirected edges, KEY/NEIGHBORS visual</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>has_edge_impl</code> + <code>has_edge_trace</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Two-step lookup code + step-by-step trace showing it-&gt;first/it-&gt;second</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>edge_count_impl</code> + <code>edge_count_trace</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Structured binding syntax breakdown + iteration trace on triangle graph</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>neighbors_impl</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Code walkthrough with graph visual showing returned vector</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bfs_impl</code> + <code>bfs_code_trace</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Queue-based BFS code walkthrough + full execution trace with variable legend</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>dfs_impl</code> + <code>dfs_reverse_push</code> + <code>dfs_code_trace</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Stack-based DFS code, rbegin/rend/*it deep dive, execution trace showing duplicate skip</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;"><code>bfs_vs_dfs</code></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Side-by-side comparison: queue vs stack, visit order, when to use each</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F4CA; Grading (30 points)</h3>
+<p>Your code is auto-graded by GitHub Classroom when you push. Tests check that each TODO produces the correct output.</p>
+<table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">Category</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">Points</th>
+            <th style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5; font-weight: 700;">What is tested</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Build</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">0</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Project must compile (tests won't run otherwise)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Constructor</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">2</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Empty graph has 0 vertices and 0 edges</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">add_vertex</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">3</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Single vertex insertion, duplicate ignored (idempotent)</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">add_edge</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">5</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Auto-creates vertices, undirected (both directions), correct edge count on 5-edge graph</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Queries</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">5</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">has_vertex true/false, has_edge false for non-adjacent vertices</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Neighbors</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">3</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Correct neighbor list for vertex B, empty list for nonexistent vertex</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">BFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">6</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Visits all vertices with start first, single vertex, nonexistent start returns empty</td>
+        </tr>
+        <tr style="background-color: #fafafa;">
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">DFS</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">6</td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px;">Visits all vertices with start first, single vertex, nonexistent start returns empty</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f5f5f5;"><strong>Total</strong></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; font-weight: 700; background-color: #f5f5f5;"><strong>30</strong></td>
+            <td style="border: 1px solid #c7cdd1; padding: 10px 14px; background-color: #f5f5f5;"></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>&#x1F527; Troubleshooting</h3>
+
+<h4>CMake does not configure automatically</h4>
+<ol>
+    <li>Make sure you have <strong>Desktop development with C++</strong> workload installed in Visual Studio</li>
+    <li>Go to <em>Project &rarr; CMake Settings</em> and ensure the configuration is correct</li>
+    <li>Try <em>Project &rarr; Delete Cache and Reconfigure</em></li>
+    <li>Verify that <code>CMakeLists.txt</code> is in the root of your cloned repository</li>
+</ol>
+
+<h4>Tests fail to build</h4>
+<ul>
+    <li>Google Test is fetched automatically via CMake&#x2019;s <code>FetchContent</code> &mdash; make sure you have an internet connection during the first build</li>
+    <li>Do <strong>not</strong> modify header files in the <code>include/</code> folder</li>
+</ul>
+
+<h4>Running the Program</h4>
+<ol>
+    <li>In Visual Studio, select <code>ct17-graph-representations.exe</code> as the startup item from the dropdown</li>
+    <li>Press <strong>Ctrl+F5</strong> to run without debugging</li>
+    <li>You should see output from each section as you complete the TODOs</li>
+</ol>
+
+<div style="padding: 14px 18px; border-radius: 4px; margin-bottom: 16px; background-color: #dff0d8; border: 1px solid #d6e9c6; color: #3c763d;">
+    <strong>Tip:</strong> Look for the <code>// ! DISCUSSION:</code> comments in each file &mdash; these explain the &#x201C;why&#x201D; behind each concept. The <code>// ? SEE DIAGRAM:</code> comments point you to visual aids in the <code>images/</code> folder. Every function in Graph.cpp has a matching SVG diagram with a code walkthrough.
+</div>
