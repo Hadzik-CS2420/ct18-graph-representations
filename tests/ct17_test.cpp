@@ -85,12 +85,14 @@ TEST(GraphQuery, HasVertexTrue) {
 
 TEST(GraphQuery, HasVertexFalse) {
     Graph g = build_test_graph();
-    EXPECT_FALSE(g.has_vertex("Z"));
+    EXPECT_TRUE(g.has_vertex("A"));   // a vertex that is there
+    EXPECT_FALSE(g.has_vertex("Z"));  // one that is not
 }
 
 TEST(GraphQuery, HasEdgeFalse) {
     Graph g = build_test_graph();
-    EXPECT_FALSE(g.has_edge("A", "D"));
+    EXPECT_TRUE(g.has_edge("A", "B"));   // an edge that is there
+    EXPECT_FALSE(g.has_edge("A", "D"));  // both vertices exist, no edge
     EXPECT_FALSE(g.has_edge("C", "D"));
 }
 
@@ -110,6 +112,7 @@ TEST(GraphNeighbors, CorrectNeighbors) {
 
 TEST(GraphNeighbors, NonexistentVertex) {
     Graph g = build_test_graph();
+    EXPECT_FALSE(g.neighbors("A").empty());  // a real vertex has neighbors
     auto n = g.neighbors("Z");
     EXPECT_TRUE(n.empty());
 }
@@ -121,7 +124,7 @@ TEST(GraphNeighbors, NonexistentVertex) {
 TEST(GraphBFS, VisitsAllVertices) {
     Graph g = build_test_graph();
     auto result = g.bfs("A");
-    EXPECT_EQ(result.size(), 5);
+    ASSERT_EQ(result.size(), 5);
     // A must be first (start vertex)
     EXPECT_EQ(result[0], "A");
 }
@@ -141,12 +144,13 @@ TEST(GraphBFS, SingleVertex) {
     Graph g;
     g.add_vertex("X");
     auto result = g.bfs("X");
-    EXPECT_EQ(result.size(), 1);
+    ASSERT_EQ(result.size(), 1);
     EXPECT_EQ(result[0], "X");
 }
 
 TEST(GraphBFS, NonexistentStart) {
     Graph g = build_test_graph();
+    EXPECT_FALSE(g.bfs("A").empty());  // a real start vertex visits something
     auto result = g.bfs("Z");
     EXPECT_TRUE(result.empty());
 }
@@ -158,7 +162,7 @@ TEST(GraphBFS, NonexistentStart) {
 TEST(GraphDFS, VisitsAllVertices) {
     Graph g = build_test_graph();
     auto result = g.dfs("A");
-    EXPECT_EQ(result.size(), 5);
+    ASSERT_EQ(result.size(), 5);
     EXPECT_EQ(result[0], "A");
 }
 
@@ -177,12 +181,13 @@ TEST(GraphDFS, SingleVertex) {
     Graph g;
     g.add_vertex("X");
     auto result = g.dfs("X");
-    EXPECT_EQ(result.size(), 1);
+    ASSERT_EQ(result.size(), 1);
     EXPECT_EQ(result[0], "X");
 }
 
 TEST(GraphDFS, NonexistentStart) {
     Graph g = build_test_graph();
+    EXPECT_FALSE(g.dfs("A").empty());  // a real start vertex visits something
     auto result = g.dfs("Z");
     EXPECT_TRUE(result.empty());
 }
